@@ -1,2 +1,12 @@
-.judul {
-color:red;}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+.vh-100 {
+  margin: 30px;
+}
+.text-center {
+  margin: 40px;
+}
