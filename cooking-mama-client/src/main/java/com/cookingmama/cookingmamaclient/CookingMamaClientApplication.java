@@ -25,10 +25,7 @@ public class CookingMamaClientApplication {
         return "register";
     }
 
-    @GetMapping("/private")
-    public String Private(){
-        return "private";
-    }
+
     @GetMapping("/detail")
     public String DetailRecipe(){
         return "detailrecipe";
