@@ -9,6 +9,18 @@
 
 </head>
 <header>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="active" href="#home"><img src="/static/images/cookma.png" width="150" height="35"></a>
+            <a class="navbar-brand">Create Recipe</a>
+            <!--        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">-->
+            <form class="d-flex">
+                <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">Search</button>
+                <a href="#username"><b>Username</b></a>
+            </form>
+        </div>
+    </nav>
 <!--    <ul class="nav nav-pills">-->
 <!--        <li class="nav-item">-->
 <!--            <a class="nav-link active" aria-current="page" href="#">Active</a>-->
@@ -68,16 +80,7 @@
 <!--    </nav>-->
 </header>
 <body>
-<nav class="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand">Create Recipe</a>
-<!--        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">-->
-        <form class="d-flex">
-            <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+
 <div class="container min-vh-100 d-flex aligns-items-center justify-content-center create-form" >
     <form class="w-75 pt-3 p-3">
         <div class="row mb-3 align-items-center">
