@@ -4,8 +4,16 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/cooking-mama-client/pom.xml" />
+<<<<<<< HEAD
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="19" project-jdk-type="JavaSDK" />
+=======
+        <option value="$PROJECT_DIR$/cooking-mama-backend/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+>>>>>>> 383a0a59f151eef13ec1735766f273c9261e01b0
 </project>
