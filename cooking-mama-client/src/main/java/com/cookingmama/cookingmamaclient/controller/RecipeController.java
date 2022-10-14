@@ -11,4 +11,8 @@ public class RecipeController {
     public String home (Model model){
         return "home";
     }
+    @GetMapping("/private")
+    public String Private(Model model){
+        return "private";
+    }
 }
