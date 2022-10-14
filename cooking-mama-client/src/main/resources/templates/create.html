@@ -1,11 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-  <link rel="stylesheet" href="/static/crate/style.css">
-</head>
-<body>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="" th:href="@{/css/create/style.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Buat Resep - Cooking Mama</title>
 
+</head>
+<header>
+<!--    <ul class="nav nav-pills">-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link active" aria-current="page" href="#">Active</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item dropdown">-->
+<!--            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>-->
+<!--            <ul class="dropdown-menu">-->
+<!--                <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                <li><hr class="dropdown-divider"></li>-->
+<!--                <li><a class="dropdown-item" href="#">Separated link</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link" href="#">Link</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item">-->
+<!--            <a class="nav-link disabled">Disabled</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <nav class="navbar navbar-expand-lg ">-->
+<!--        <div class="container-fluid">-->
+<!--            <a class="navbar-brand" href="#">Cooking Mama</a>-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
+<!--                <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" aria-current="page" href="#">Home</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#">Link</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                            Dropdown-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu">-->
+<!--                            <li><a class="dropdown-item" href="#">Action</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+<!--                            <li><hr class="dropdown-divider"></li>-->
+<!--                            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link disabled">Disabled</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--                <form class="d-flex" role="search">-->
+<!--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" disabled>-->
+<!--                    <button class="btn btn-outline-success" type="submit" disabled>Search</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+</header>
+<body>
+<nav class="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand">Create Recipe</a>
+<!--        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">-->
+        <form class="d-flex">
+            <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<div class="container min-vh-100 d-flex aligns-items-center justify-content-center create-form" >
+    <form class="w-75 pt-3 p-3">
+        <div class="row mb-3 align-items-center">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Recipe Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail3">
+<!--                <input type="text" class="form-control" id="inputEmail3" th:field="*{}">-->
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Ingredient</label>
+            <div class="col-sm-10">
+<!--                <input type="text" class="form-control" id="inputPassword4">-->
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+<!--                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{}"></textarea>-->
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="exampleFormControlTextarea2" class="col-sm-2 col-form-label">How to cook</label>
+            <div class="col-sm-10">
+<!--                <input type="textarea" class="form-control" id="inputPassword3">-->
+                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+<!--                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-10">
+                <h4 id="staticEmail" th:text="${author}"></h4>
+            </div>
+        </div>
+        <div class="row mb-3 align-items-center ">
+            <label for="formFile" class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="file" id="formFile">
+            </div>
+
+        </div>
+        <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Choose Audience</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        Private
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        Public
+                    </label>
+                </div>
+<!--                <div class="form-check disabled">-->
+<!--                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>-->
+<!--                    <label class="form-check-label" for="gridRadios3">-->
+<!--                        Third disabled radio-->
+<!--                    </label>-->
+<!--                </div>-->
+            </div>
+        </fieldset>
+<!--        <div class="row mb-3">-->
+<!--            <div class="col-sm-10 offset-sm-2">-->
+<!--                <div class="form-check">-->
+<!--                    <input class="form-check-input" type="checkbox" id="gridCheck1">-->
+<!--                    <label class="form-check-label" for="gridCheck1">-->
+<!--                        Example checkbox-->
+<!--                    </label>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
 </html>
