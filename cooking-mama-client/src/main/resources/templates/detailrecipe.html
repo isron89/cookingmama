@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymleaf.org">
     <head>
         <meta charset="UTF-8">
         <title>Title</title>
-        <link rel="stylesheet" href="/static/detail/style.css">
+        <link rel="stylesheet" href="" th:href="@{/css/detail/style.css}">
     </head>
     <header>
         <div class="topnav">
-            <a class="active" href="#home"><img src="/static/images/cookma.png" width="150" height="35"></a>
+            <a class="active" href="#home"><img src="" th:src="@{/images/cookma.png}" width="150" height="35"></a>
             <input type="text" placeholder="Search..">
             <a href="#username"><b>Username</b></a>
         </div>
