@@ -23,10 +23,7 @@ public class CookingMamaClientApplication {
     public String Register(){
         return "register";
     }
-    @GetMapping("/home")
-    public String Home(){
-        return "home";
-    }@GetMapping("/private")
+    @GetMapping("/private")
     public String Private(){
         return "private";
     }@GetMapping("/detail")
