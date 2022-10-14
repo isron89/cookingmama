@@ -9,18 +9,18 @@
 
 </head>
 <header>
-    <nav class="navbar">
+    <div class="topnav">
+        <a class="active" href="#home"><img th:src="@{/images/cookma.png}" width="150" height="35"></a>
         <div class="container-fluid">
-            <a class="active" href="#home"><img src="/static/images/cookma.png" width="150" height="35"></a>
             <a class="navbar-brand">Create Recipe</a>
-            <!--        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">-->
             <form class="d-flex">
-                <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-                <a href="#username"><b>Username</b></a>
+                <input class="form-control mr-3 mt-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success mt-3 mr-2 pt-2" type="submit">Search</button>
             </form>
+            <!--            <input type="text" placeholder="Search..">-->
         </div>
-    </nav>
+        <a href="#username"><b>Username</b></a></div>
+    </div>
 <!--    <ul class="nav nav-pills">-->
 <!--        <li class="nav-item">-->
 <!--            <a class="nav-link active" aria-current="page" href="#">Active</a>-->
