@@ -34,8 +34,7 @@ public class RestClientController {
 
     @GetMapping
     public ResponseEntity<?> findAllRecipe(){
-        var recipe = service.getAll();;
-        return recipe;
+        return  service.getAll();
     }
 
 

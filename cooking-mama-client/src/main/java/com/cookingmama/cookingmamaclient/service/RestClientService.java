@@ -24,6 +24,7 @@ public class RestClientService {
     public ResponseEntity<Recipe[]> getAll(){
         ResponseEntity<Recipe[]> response= restTemplate.getForEntity("http://localhost:8080/api/resep",Recipe[].class);
         return response;
+
     }
 
 }
