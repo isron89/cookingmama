@@ -42,6 +42,8 @@ public class CookingMamaClientApplication {
     public String DetailRecipe(Model model){
 
         model.addAttribute("authorDetail", "namaAuthor");
+        model.addAttribute("authorIngredients", "titleAuthor");
+        model.addAttribute("authorHowTo", "howToAuthor");
         return "detailrecipe";
     }
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
+        <title> Detail Recipe Cooking Mama </title>
         <link rel="stylesheet" type="text/css" href="" th:href="@{/css/detail/style.css}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     </head>
@@ -33,7 +33,7 @@
             margin-left: 220px;
             margin-right: 100px;
             margin-top: 20px;">
-            <h1 style="text-align: center; margin-top: 50px;">How To Make the Easiest Baso Aci Ever</h1>
+            <h1 style="text-align: center; margin-top: 50px;" th:text="${authorTitle}"></h1>
             <div class="uname-author">
                 <br><br>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -47,23 +47,10 @@
             <p> <img src = "https://kanalwisata.com/wp-content/uploads/2020/05/baso-aci.jpg" class="centerimg"> </p>
             <br><br>
             <p style="text-align:center; margin-top: 50px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">INGREDIENTS:</p>
-            <p style="margin-left: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;">
-                1 medium yellow onion <br>
-                1 tablespoon olive oil <br>
-                1 pound lean ground beef <br>
-                1/2 teaspoon kosher salt <br>
-                1/4 teaspoon freshly ground black pepper <br>
-                1 (24 to 25-ounce) jar marinara sauce (3 cups), such as Rao's or Newman's Own <br>
-                12 ounces low-moisture mozzarella cheese, shredded (about 3 cups), divided <br>
+            <p style="margin-left: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;" th:text="${authorIngredients}">
             </p>
             <p style="text-align:center; margin-top: 80px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">HOW TO COOK: </p>
-            <p style="margin-left: 50px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify;">
-                1. Heat the oven to 400ºF. Arrange a rack in the middle of the oven and heat the oven to 400°F.<br><br>
-                2. Brown the beef and onion. Finely chop 1 medium yellow onion. Heat 1 tablespoon olive oil in a 12-inch or larger regular or cast iron skillet over medium-high heat until shimmering.
-                Add the onion, 1 pound lean ground beef, 1/2 teaspoon kosher salt, and 1/4 teaspoon freshly ground black pepper, and cook, breaking the beef up into small pieces with a wooden spoon, until the beef is cooked through, 6 to 8 minutes.
-                Remove from the heat and let cool for 5 minutes. <br><br>
-                3. Prepare the baking dish and assemble the meat sauce. Open 1 (24 to 25-ounce) jar marinara sauce (3 cups).
-                Spread a thin layer of the sauce in the bottom of a 9x13-inch baking dish. Stir the remaining sauce into the ground beef mixture.
+            <p style="margin-left: 50px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify;" th:text="${authorHowTo}">
             </p>
             <div style="margin-top: 50px; margin-left: 400px;">
                 <a th:href="@{/edit}"> <button type="button" class="btn btn-light"> <svg xmlns="http://www.w3.org/2000/svg" color="black" width="35" height="40" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
