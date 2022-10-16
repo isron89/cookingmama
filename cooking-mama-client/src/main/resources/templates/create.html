@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="" th:href="@{/css/create/style.css}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <title>Buat Resep - Cooking Mama</title>
+    <title>Create Recipe - Cooking Mama</title>
 
 </head>
 <header>
-    <nav class="navbar">
+    <div class="topnav">
+        <a class="active" href="" th:href="@{/home}"><img th:src="@{/images/cookma.png}" width="150" height="35"></a>
         <div class="container-fluid">
-            <a class="active" href="#home"><img src="/static/images/cookma.png" width="150" height="35"></a>
             <a class="navbar-brand">Create Recipe</a>
-            <!--        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">-->
             <form class="d-flex">
-                <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-                <a href="#username"><b>Username</b></a>
+                <input class="form-control mr-3 mt-3" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success mt-3 mr-2 pt-2" type="submit">Search</button>
             </form>
+            <!--            <input type="text" placeholder="Search..">-->
         </div>
-    </nav>
+        <a th:text="${authorEdit}"></a></div>
+    </div>
 <!--    <ul class="nav nav-pills">-->
 <!--        <li class="nav-item">-->
 <!--            <a class="nav-link active" aria-current="page" href="#">Active</a>-->
