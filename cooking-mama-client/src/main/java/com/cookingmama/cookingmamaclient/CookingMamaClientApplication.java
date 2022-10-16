@@ -39,7 +39,9 @@ public class CookingMamaClientApplication {
 
 
     @GetMapping("/detail")
-    public String DetailRecipe(){
+    public String DetailRecipe(Model model){
+
+        model.addAttribute("authorDetail", "namaAuthor");
         return "detailrecipe";
     }
 
