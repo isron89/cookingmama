@@ -2,25 +2,24 @@ package com.cookingmama.cookingmamaclient.dto;
 
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
 @Data
 
 public class Recipe {
-    private Long id;
+    private String id;
     private String name;
     private String howto;
     private String ingredients;
     private Boolean publik;
     private String userid;
 
-    public Long getId(){
+    public String getId(){
         return id;
     }
     public void setId(Long id){
-        this.id=id;
+        this.id="";
     }
 
     public String getName(){
