@@ -41,7 +41,7 @@ public class RecipeController {
         return "create";
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/createRecipe")
     public String create(@Validated @ModelAttribute("newRecipe") Recipe recipe) {
         service.recipe(recipe);
         return "redirect:/home";
