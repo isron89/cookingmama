@@ -17,11 +17,16 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
+import com.cookingmama.cookingmamaclient.repository.recipeRepository;
+
 @SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
 @Controller
 public class RecipeController {
     @Autowired
     private RecipeServiceImpl service;
+    @Autowired
+    private recipeRepository repo;
     @Autowired
     private ObjectMapper mapper;
 
@@ -52,6 +57,11 @@ public class RecipeController {
         MessageDTO dto = mapper.readValue(ex.getResponseBodyAsByteArray(), MessageDTO.class);
         model.addAttribute("error", dto.getMessage());
         return home(model);
+    }
+
+    @GetMapping("detail/id")
+    public Optional<Recipe> find(@PathVariable("id") Long id){
+        return repo.findById(id);
     }
 }
 
