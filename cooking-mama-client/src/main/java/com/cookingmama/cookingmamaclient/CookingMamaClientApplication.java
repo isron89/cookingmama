@@ -48,12 +48,7 @@ public class CookingMamaClientApplication {
         return "detailrecipe";
     }
 
-    @GetMapping("/create")
-    public String Create(Model model){
 
-        model.addAttribute("author", "username123");
-        return "create";
-    }
 
     @GetMapping("/edit")
     public String Edit(Model model){

@@ -2,7 +2,6 @@ package com.cookingmama.cookingmamaclient.dto;
 
 import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
@@ -20,7 +19,7 @@ public class Recipe {
         return id;
     }
     public void setId(Long id){
-        this.id=id;
+        this.id= id;
     }
 
     public String getName(){
