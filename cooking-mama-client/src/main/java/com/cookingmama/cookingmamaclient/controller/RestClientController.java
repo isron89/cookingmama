@@ -24,15 +24,17 @@ public class RestClientController {
     private RestClientService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> findUserStringById(@PathVariable("id") int id){
+    public ResponseEntity<String> findUserStringById(@PathVariable("id") Long id){
+
         return service.getUserString(id);
     }
     @GetMapping("/object/{id}")
-    public ResponseEntity<Recipe> findRecipeObject(@PathVariable("id") int id){
+    public ResponseEntity<Recipe> findRecipeObject(@PathVariable("id") Long id){
+
         return service.getRecipeObject(id);
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<?> findAllRecipe(){
         return  service.getAll();
     }
