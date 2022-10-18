@@ -16,6 +16,10 @@ import java.util.stream.Collectors;
 public class RecipeServiceImpl {
     @Value("${resource.recipes}")
     private String resource;
+
+    @Value("${resource.register}")
+    private String resourceregister;
+
     @Autowired
     private RestTemplate restTemplate;
 

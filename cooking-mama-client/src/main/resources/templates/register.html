@@ -26,24 +26,24 @@
                         <p class="text-center fw-bold mx-0 mb-0">REGISTER</p>
                     </div>
 
-                    <!-- Name input -->
+                    <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input id="form3Example2" class="form-control form-control-lg"
-                               placeholder="Enter name" />
-                        <label class="form-label" for="form3Example3">Name</label>
+                               placeholder="Enter email" th:field="*{email}" />
+                        <label class="form-label" for="form3Example3">Email</label>
                     </div>
 
                     <!-- Username input -->
                     <div class="form-outline mb-4">
                         <input id="form3Example3" class="form-control form-control-lg"
-                               placeholder="Enter username" />
+                               placeholder="Enter username" th:field="*{username}" />
                         <label class="form-label" for="form3Example3">Username</label>
                     </div>
 
                     <!-- Password input -->
                     <div class="form-outline mb-3">
                         <input type="password" id="form3Example4" class="form-control form-control-lg"
-                               placeholder="Enter password" />
+                               placeholder="Enter password" th:field="*{password}" />
                         <label class="form-label" for="form3Example4">Password</label>
                     </div>
 
