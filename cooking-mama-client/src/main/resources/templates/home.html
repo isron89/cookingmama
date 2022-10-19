@@ -49,8 +49,9 @@
                         <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 th:text="${recipe.name}" class="card-title">Card title </h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a th:href="@{/detail}" class="btn btn-primary">Detail Resep</a>
+                            <p th:text="${recipe.ingredients}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <a th:href="@{/detail/}+${recipe.id}" class="btn btn-primary">Detail Resep</a>
+
                         </div>
                     </div>
                 </div>
