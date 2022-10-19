@@ -4,7 +4,7 @@ public class Recipe {
 
     private String id;
 
-    private String nama;
+    private String name;
 
     private String ingredients;
 

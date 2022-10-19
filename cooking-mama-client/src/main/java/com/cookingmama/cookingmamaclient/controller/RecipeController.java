@@ -32,6 +32,7 @@ public class RecipeController {
     }
     @GetMapping("/private")
     public String Private(Model model){
+        model.addAttribute("recipes", service.findAll());
         return "private";
     }
 
