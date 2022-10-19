@@ -20,6 +20,9 @@ public class RecipeServiceImpl {
     @Value("${resource.getId}/{id}")
     private String idResource;
 
+    @Value("${resource.myrecipes}")
+    private String myrecipes;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -46,4 +49,9 @@ public Recipe getDetail(Long id, Recipe recipe) {
 //        Optional<Recipe> recipesData = recipeRepository.findById(id);
 //        return recipesData.isPresent() ? new ResponseEntity<>(recipesData.get(), HttpStatus.OK) : new ResponseEntity<>(HttpStatus.NOT_FOUND);
 //    }
+    // MY RECIPES
+    public List<Recipe> MyRecipes() {
+    System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
+    return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
+}
 }
