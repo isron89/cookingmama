@@ -32,11 +32,10 @@ public class CookingMamaClientApplication {
     public String Login(){
         return "login";
     }
-    @GetMapping("/register")
-    public String Register(){
-        return "register";
-    }
-
+//    @GetMapping("/register")
+//    public String Register(){
+//        return "register";
+//    }
 
 
 
