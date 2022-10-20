@@ -19,6 +19,8 @@ public class Recipe {
     private Boolean publik;
     private String userid;
 
+    private float stars;
+
     public Long getId(){
 
         return id;
@@ -66,6 +68,14 @@ public class Recipe {
 
     public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public Float getStars() {
+        return stars;
+    }
+
+    public void setStars(String ingredients) {
+        this.stars = stars;
     }
 }
 

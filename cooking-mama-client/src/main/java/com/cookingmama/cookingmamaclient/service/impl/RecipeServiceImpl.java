@@ -16,12 +16,19 @@ public class RecipeServiceImpl {
 
     @Value("${resource.create}")
     private String createResource;
-
     @Value("${resource.getId}/{id}")
     private String idResource;
 
+
     @Value("${resource.myrecipes}")
     private String myrecipes;
+
+
+//    @Value("${resource.recipesPrivate}")
+//    private String resourcePrivate;
+    @Value("${resource.delete}/{id}")
+    private String delete;
+
 
     @Autowired
     private RestTemplate restTemplate;
@@ -30,6 +37,10 @@ public class RecipeServiceImpl {
         System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
         return Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList());
     }
+//    public List<Recipe> findAllPrivate() {
+////        System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
+//        return Arrays.stream(restTemplate.getForObject(resourcePrivate, Recipe[].class)).collect(Collectors.toList());
+//    }
 
     public Recipe recipe(Recipe recipe) {
 
@@ -54,4 +65,8 @@ public Recipe getDetail(Long id, Recipe recipe) {
     System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
     return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
 }
+    public void delete(Long id) {
+        restTemplate.delete(delete, id);
+    }
+
 }

@@ -59,7 +59,7 @@ a:focus {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: orange;
+    background: orange  ;
     color: #fff;
 }
 
@@ -135,6 +135,15 @@ margin-top:50px;
 }
 .card{
 margin-bottom: 30px;
+min-height:350px;
+border-radius:40px !important;
+padding:30px;
+}
+
+.badge {
+width: 9em !important;
+height : 2em !important;
+border-radius: 5px;
 }
 
 /* ---------------------------------------------------

@@ -29,7 +29,7 @@ public class RecipeController {
     private ObjectMapper mapper;
 
     @GetMapping("/home")
-    public String home (Model model){
+    public String Home (Model model){
         model.addAttribute("recipes", service.findAll());
         return "home";
     }
@@ -50,19 +50,22 @@ public class RecipeController {
         service.recipe(recipe);
         return "redirect:/home";
     }
-
     @ExceptionHandler(HttpClientErrorException.class)
     public String handleClientError(HttpClientErrorException ex, Model model) throws IOException {
         MessageDTO dto = mapper.readValue(ex.getResponseBodyAsByteArray(), MessageDTO.class);
         model.addAttribute("error", dto.getMessage());
-        return home(model);
+        return Home(model);
     }
     @GetMapping("/detail/{id}")
     public String getRecipesId (@PathVariable Long id,String name, Model model, Recipe recipe){
         model.addAttribute("detail",service.getDetail( id, recipe));
         return "detailrecipe";
     }
-
+    @RequestMapping(value = "/deleteRecipe/{id}")
+    public String delete(@RequestParam Long id) {
+        service.delete(id);
+        return "redirect:/home";
+    }
 
 }
 
