@@ -70,21 +70,21 @@ public class RecipeController {
         return "edit";
     }
 
-    @PostMapping(value = "/updateRecipe/{id}")
-    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
-        service.update(saveEdit);
-        return "redirect:/home";
-    }
-
-//    @RequestMapping(
-//            value = "/updateRecipe/{id}",
-//            produces = "application/json",
-//            method = RequestMethod.PUT
-//    )
+//    @PostMapping(value = "/updateRecipe/{id}")
 //    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
 //        service.update(saveEdit);
 //        return "redirect:/home";
 //    }
+
+    @RequestMapping(
+            value = "/updateRecipe/{id}",
+            produces = "application/json",
+            method = RequestMethod.POST
+    )
+    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
+        service.update(saveEdit);
+        return "redirect:/home";
+    }
 
 }
 
