@@ -24,16 +24,8 @@
         </div>
     </header>
     <body>
-        <div style="
-            background-color: #FFFFFF;
-            border-style: ridge;
-            height: 100%;
-            width: 900px;
-            position: static;
-            margin-left: 220px;
-            margin-right: 100px;
-            margin-top: 20px;">
-            <h1 style="text-align: center; margin-top: 50px;">How To Make the Easiest Baso Aci Ever</h1>
+        <div>
+            <h1 th:text="${detail.name}">test</h1>
             <div class="uname-author">
                 <br><br>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
@@ -46,7 +38,7 @@
             </div>
             <p> <img src = "https://kanalwisata.com/wp-content/uploads/2020/05/baso-aci.jpg" class="centerimg"> </p>
             <br><br>
-            <p style="text-align:center; margin-top: 50px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">INGREDIENTS:</p>
+            <p th:text="${detail.howto}" >INGREDIENTS:</p>
             <p style="margin-left: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;">
                 1 medium yellow onion <br>
                 1 tablespoon olive oil <br>

@@ -13,16 +13,16 @@ public class RestClientService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public ResponseEntity<String> getUserString(int id){
-        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/api/resep",String.class);
+    public ResponseEntity<String> getUserString(Long id){
+        ResponseEntity<String> response = restTemplate.getForEntity("http://localhost:8080/api/recipe/",String.class);
         return response;
     }
-    public ResponseEntity<Recipe> getRecipeObject(int id){
-        Recipe recipe = restTemplate.getForObject("http://localhost:8080/api/resep"+id,Recipe.class);
+    public ResponseEntity<Recipe> getRecipeObject(Long id){
+        Recipe recipe = restTemplate.getForObject("http://localhost:8080/api/recipe/recipes/"+id,Recipe.class);
         return ResponseEntity.ok(recipe);
     }
     public ResponseEntity<Recipe[]> getAll(){
-        ResponseEntity<Recipe[]> response= restTemplate.getForEntity("http://localhost:8080/api/resep",Recipe[].class);
+        ResponseEntity<Recipe[]> response= restTemplate.getForEntity("http://localhost:8080/api/recipe/recipes",Recipe[].class);
         return response;
 
     }

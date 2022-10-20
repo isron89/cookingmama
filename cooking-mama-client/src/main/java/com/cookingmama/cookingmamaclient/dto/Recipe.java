@@ -3,23 +3,29 @@ package com.cookingmama.cookingmamaclient.dto;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import javax.persistence.Id;
+
 @Getter
 @Setter
 @Data
 
 public class Recipe {
-    private String id;
+    @Id
+    private Long id;
     private String name;
     private String howto;
     private String ingredients;
     private Boolean publik;
     private String userid;
 
-    public String getId(){
+    public Long getId(){
+
         return id;
     }
     public void setId(Long id){
-        this.id="";
+
+        this.id= id;
     }
 
     public String getName(){
