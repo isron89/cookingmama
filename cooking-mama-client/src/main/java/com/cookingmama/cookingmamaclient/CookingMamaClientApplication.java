@@ -42,20 +42,7 @@ public class CookingMamaClientApplication {
 
 
 
-    @GetMapping("/edit")
-    public String Edit(Model model){
 
-        model.addAttribute("authorEdit", "Singgih");
-//        CacheRequest object;
-//        String body = object.getBody();
-//        Gson gson = new Gson();
-//        Map<String, Object> map = gson.fromJson(body, HashMap.class);
-//        Map<String, Object> data = (Map<String, Object>) map.get("data");
-//        Map<String, Object> creditTerm = (Map<String, Object>) data.get("MS8B50FHS");
-//        String creditTermValue = creditTerm.get("creditTerm").toString();
-//        toStringSystem.out.println(creditTermValue);
-        return "edit";
-    }
 
 
 

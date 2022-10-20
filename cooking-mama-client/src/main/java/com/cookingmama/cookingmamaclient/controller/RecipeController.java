@@ -63,6 +63,28 @@ public class RecipeController {
         return "detailrecipe";
     }
 
+    @GetMapping("/edit/{id}")
+    public String Edit(@PathVariable Long id, Model model, Recipe recipe){
+
+        model.addAttribute("editRecipe", service.getDetail(id,recipe));
+        return "edit";
+    }
+
+    @PostMapping(value = "/updateRecipe/{id}")
+    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
+        service.update(saveEdit);
+        return "redirect:/home";
+    }
+
+//    @RequestMapping(
+//            value = "/updateRecipe/{id}",
+//            produces = "application/json",
+//            method = RequestMethod.PUT
+//    )
+//    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
+//        service.update(saveEdit);
+//        return "redirect:/home";
+//    }
 
 }
 
