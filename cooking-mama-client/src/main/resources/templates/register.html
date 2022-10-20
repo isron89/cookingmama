@@ -21,7 +21,7 @@
                      width="90"
                      height="90"
                      class="center">
-                <form>
+                <form method="post" th:action="@{/registerUser}" th:object="${newUser}">
                     <div class="d-flex align-items-center my-4">
                         <p class="text-center fw-bold mx-0 mb-0">REGISTER</p>
                     </div>
@@ -29,7 +29,7 @@
                     <!-- Email input -->
                     <div class="form-outline mb-4">
                         <input id="form3Example2" class="form-control form-control-lg"
-                               placeholder="Enter Email" />
+                               placeholder="Enter email" th:field="*{email}" />
                         <label class="form-label" for="form3Example3">Email</label>
                     </div>
 
@@ -48,7 +48,7 @@
                     </div>
 
                     <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-lg"
+                        <button type="submit" class="btn btn-primary btn-lg"
                                 style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
                     </div>
 
