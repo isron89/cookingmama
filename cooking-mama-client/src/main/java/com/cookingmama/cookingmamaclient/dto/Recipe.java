@@ -17,7 +17,7 @@ public class Recipe {
     private String howto;
     private String ingredients;
     private Boolean publik;
-    private String userid;
+    private Long userid;
 
     private float stars;
 
@@ -54,11 +54,11 @@ public class Recipe {
         this.publik = publik;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userid;
     }
 
-    public void setUserid(String userid) {
+    public void setUserid(Long userid) {
         this.userid = userid;
     }
 

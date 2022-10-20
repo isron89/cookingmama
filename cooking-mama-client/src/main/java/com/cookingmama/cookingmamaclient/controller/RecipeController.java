@@ -61,11 +61,29 @@ public class RecipeController {
         model.addAttribute("detail",service.getDetail( id, recipe));
         return "detailrecipe";
     }
+
     @RequestMapping(value = "/deleteRecipe/{id}")
     public String delete(@RequestParam Long id) {
         service.delete(id);
         return "redirect:/home";
     }
 
+    @GetMapping("/edit/{id}")
+    public String Edit(@PathVariable Long id, Model model, Recipe recipe){
+        model.addAttribute("editRecipe", service.getDetail(id,recipe));
+        return "edit";
+    }
+
+//    @PostMapping(value = "/updateRecipe/{id}")
+//    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
+//        service.update(saveEdit);
+//        return "redirect:/home";
+//    }
+
+    @PostMapping("/updateRecipe/{id}")
+    public String saveEdit(@PathVariable Long id ,@Validated Model model, Recipe saveEdit) {
+        service.update(id, saveEdit);
+        return "redirect:/home";
+    }
 }
 
