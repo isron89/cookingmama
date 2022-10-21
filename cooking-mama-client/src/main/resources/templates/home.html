@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="" th:href="@{/css/home/style.css}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="" rel="stylesheet" th:href="@{/css/home/style.css}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
 </head>
 <body>
 <!--<h1 class="judul">Home dashborad-->
@@ -14,15 +15,15 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">
+            <img alt="..." class="card-img-top" th:href="@{/home}" src="" th:src="@{/images/cookma.png}">
         </div>
         <ul class="list-unstyled components">
             <p>Cooking Mama</p>
             <li class="active">
-                <a href="#homeSubmenu" class="list-group-item list-group-item-action active">All Recipes</a>
+                <a class="list-group-item list-group-item-action active">All Recipes</a>
             </li>
             <li>
-                <a class="list-group-item-action" href="" th:href="@{/private}">My Recipes</a>
+                <a class="list-group-item-action" th:href="@{/private}">My Recipes</a>
             </li>
         </ul>
     </nav>
@@ -32,9 +33,9 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand">All Recipes</a>
-                <form class="d-flex">
-                    <input class="form-control mr-3" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                <form th:object="${search}" th:action="@{/search}" method="get" class="d-flex">
+                    <input type="text" name="search" id="search" th:value="${search}" aria-label="Search" class="form-control mr-3" placeholder="Search">
+                    <input type="submit" value="Search" class="btn btn-success">
                 </form>
             </div>
         </nav>
@@ -42,49 +43,65 @@
             <h1>All Recipes</h1>
 
 
-            <a th:href="@{/create}"><button class="btn-lg btn-success mt-3"> <i class="fa fa-plus mr-2"></i> Create Recipes</button></a>
-            <div class="row card-content" >
+            <a th:href="@{/create}">
+                <button class="btn-lg btn-success mt-3"><i class="fa fa-plus mr-2"></i> Create Recipes</button>
+            </a>
+            <div class="row card-content">
                 <div class="col-lg-4 col-sm-6" th:each="recipe : ${recipes}">
-                    <div class="card" style="width: 18rem;">
-                        <img src="" th:src="@{/images/cookma.png}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 th:text="${recipe.name}" class="card-title">Card title </h5>
-                            <p th:text="${recipe.ingredients}" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a th:href="@{/detail/}+${recipe.id}" class="btn btn-primary">Detail Resep</a>
+                    <div class="card">
+                        <div class="d-flex flex-row-reverse">
+                            <span class="badge bg-warning text-white" th:if="${recipe.userid == '77'}">Resepku</span>
+                        </div>
 
+                        <img alt="..." class="card-img-top" src="" th:src="@{/images/cookma.png}">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${recipe.name}">Card title </h5>
+                            <div class="d-flex flex-row justify-content-start">
+                                <svg class="star-svg mr-1" height="20px" style="background-color:#FFD700;"
+                                     version="1.1" width="21px" xmlns="http://www.w3.org/2000/svg"
+                                     xmlns:xlink="http://www.w3.org/2000/svg">
+                                    <path d="M0,0.054V20h21V0.054H0z M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855
+                                        l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"
+                                          style="fill: #ffffff;"/>
+                                </svg>
+                                <p>5/5</p>
+                            </div>
+                            <p class="card-text" th:text="${recipe.ingredients}">Some quick example text to build on the
+                                card title and make up the bulk of the card's content.</p>
+                            <a class="btn btn-primary" th:href="@{/detail/}+${recipe.id}">Detail Resep</a>
                         </div>
                     </div>
                 </div>
-<!--                <div class="col-lg-4 col-sm-6">-->
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <img src="" th:src="@{/css/home/miegoreng.jpg}" class="card-img-top" alt="...">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-lg-4 col-sm-6">-->
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <img src="" th:src="@{/css/home/koloke.jpg}" class="card-img-top" alt="...">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-4">-->
-<!--                    <div class="card" style="width: 18rem;">-->
-<!--                        <img src="" th:src="@{/css/home/nasgor.jpg}" class="card-img-top" alt="...">-->
-<!--                        <div class="card-body">-->
-<!--                            <h5 class="card-title">Card title</h5>-->
-<!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
-<!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <!--                <div class="col-lg-4 col-sm-6">-->
+                <!--                    <div class="card" style="width: 18rem;">-->
+                <!--                        <img src="" th:src="@{/css/home/miegoreng.jpg}" class="card-img-top" alt="...">-->
+                <!--                        <div class="card-body">-->
+                <!--                            <h5 class="card-title">Card title</h5>-->
+                <!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                <!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="col-lg-4 col-sm-6">-->
+                <!--                    <div class="card" style="width: 18rem;">-->
+                <!--                        <img src="" th:src="@{/css/home/koloke.jpg}" class="card-img-top" alt="...">-->
+                <!--                        <div class="card-body">-->
+                <!--                            <h5 class="card-title">Card title</h5>-->
+                <!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                <!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+                <!--                <div class="col-4">-->
+                <!--                    <div class="card" style="width: 18rem;">-->
+                <!--                        <img src="" th:src="@{/css/home/nasgor.jpg}" class="card-img-top" alt="...">-->
+                <!--                        <div class="card-body">-->
+                <!--                            <h5 class="card-title">Card title</h5>-->
+                <!--                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+                <!--                            <a href="#" class="btn btn-primary">Detail Resep</a>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                </div>-->
             </div>
         </div>
     </div>
