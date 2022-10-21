@@ -15,7 +15,7 @@
     <!-- Sidebar  -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <img alt="..." class="card-img-top" src="" th:src="@{/images/cookma.png}">
+            <img alt="..." class="card-img-top" th:href="@{/home}" src="" th:src="@{/images/cookma.png}">
         </div>
         <ul class="list-unstyled components">
             <p>Cooking Mama</p>
@@ -33,9 +33,9 @@
         <nav class="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand">All Recipes</a>
-                <form class="d-flex">
-                    <input aria-label="Search" class="form-control mr-3" placeholder="Search" type="search">
-                    <button class="btn btn-success" type="submit">Search</button>
+                <form th:object="${search}" th:action="@{/search}" method="get" class="d-flex">
+                    <input type="text" name="search" id="search" th:value="${search}" aria-label="Search" class="form-control mr-3" placeholder="Search">
+                    <input type="submit" value="Search" class="btn btn-success">
                 </form>
             </div>
         </nav>

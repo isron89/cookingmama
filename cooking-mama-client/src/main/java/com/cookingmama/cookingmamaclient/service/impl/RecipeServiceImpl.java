@@ -42,6 +42,9 @@ public class RecipeServiceImpl {
     @Value("${resource.edit}/{id}")
     private String updateRecipe;
 
+    @Value("${resource.search}{search}") //+
+    private String recipeSearch;
+
 
     @Autowired
     private RestTemplate restTemplate;
@@ -94,5 +97,10 @@ public class RecipeServiceImpl {
 //    public Recipe update(Long id, Recipe update) {
 //        return restTemplate.postForObject(updateRecipe, update, Recipe.class,id);
 //    }
+
+    public List<Recipe> searchRecipe(String search) {
+//        System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
+        return Arrays.stream(restTemplate.getForObject(recipeSearch, Recipe[].class, search)).collect(Collectors.toList());
+    }
 
 }

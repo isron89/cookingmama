@@ -99,5 +99,11 @@ public class RecipeController {
         }
 
     }
+
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public String Home(@RequestParam (value = "search", required = false) String search, Model model) {
+        model.addAttribute("recipes", service.searchRecipe(search));
+        return "home";
+    }
 }
 
