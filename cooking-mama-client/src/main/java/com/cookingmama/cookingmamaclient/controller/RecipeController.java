@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 //import org.springframework.Component
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -29,19 +30,20 @@ public class RecipeController {
     private ObjectMapper mapper;
 
     @GetMapping("/home")
-    public String home (Model model){
+    public String Home(Model model) {
         model.addAttribute("recipes", service.findAll());
         return "home";
     }
+
     @GetMapping("/private")
-    public String Private(Model model){
+    public String Private(Model model) {
         model.addAttribute("recipes", service.MyRecipes());
         return "private";
     }
 
     @GetMapping("/create")
-    public String Create(Model model){
-        model.addAttribute("newRecipe",new Recipe() );
+    public String Create(Model model) {
+        model.addAttribute("newRecipe", new Recipe());
         return "create";
     }
 
@@ -55,18 +57,24 @@ public class RecipeController {
     public String handleClientError(HttpClientErrorException ex, Model model) throws IOException {
         MessageDTO dto = mapper.readValue(ex.getResponseBodyAsByteArray(), MessageDTO.class);
         model.addAttribute("error", dto.getMessage());
-        return home(model);
+        return Home(model);
     }
+
     @GetMapping("/detail/{id}")
-    public String getRecipesId (@PathVariable Long id,String name, Model model, Recipe recipe){
-        model.addAttribute("detail",service.getDetail( id, recipe));
+    public String getRecipesId(@PathVariable Long id, String name, Model model, Recipe recipe) {
+        model.addAttribute("detail", service.getDetail(id, recipe));
         return "detailrecipe";
     }
 
-    @GetMapping("/edit/{id}")
-    public String Edit(@PathVariable Long id, Model model, Recipe recipe){
+    @RequestMapping(value = "/deleteRecipe/{id}")
+    public String delete(@RequestParam Long id) {
+        service.delete(id);
+        return "redirect:/home";
+    }
 
-        model.addAttribute("editRecipe", service.getDetail(id,recipe));
+    @GetMapping("/edit/{id}")
+    public String Edit(@PathVariable Long id, Model model, Recipe recipe) {
+        model.addAttribute("editRecipe", service.getDetail(id, recipe));
         return "edit";
     }
 
@@ -76,8 +84,9 @@ public class RecipeController {
 //        return "redirect:/home";
 //    }
 
+
     @PostMapping(value = "/updateRecipe/{id}")
-    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("editRecipe") Recipe saveEdit) {
+    public String saveEdit(@PathVariable Long id, @Validated @ModelAttribute("editRecipe") Recipe saveEdit) {
         try {
             System.out.println(saveEdit + "<<<<< save edit log");
             service.update(saveEdit.getId(), saveEdit);
@@ -88,6 +97,7 @@ public class RecipeController {
             System.out.println(err.getMessage());
             return "edit";
         }
+
     }
 }
 
