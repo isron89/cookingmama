@@ -38,21 +38,19 @@ public class CookingMamaClientApplication {
     }
 
 
-    @GetMapping("/detail")
-    public String DetailRecipe(Model model){
 
-        model.addAttribute("authorDetail", "namaAuthor");
-        model.addAttribute("authorTitle", "titleAuthor");
-        model.addAttribute("authorIngredients", "authorIngredients");
-        model.addAttribute("authorHowTo", "howToAuthor");
-        return "detailrecipe";
-    }
+
+//        model.addAttribute("authorDetail", "namaAuthor");
+//        model.addAttribute("authorTitle", "titleAuthor");
+//        model.addAttribute("authorIngredients", "authorIngredients");
+//        model.addAttribute("authorHowTo", "howToAuthor");
+//        return "detailrecipe";
+//    }
 
 
 
     @GetMapping("/edit")
     public String Edit(Model model){
-
         model.addAttribute("authorEdit", "Singgih");
 //        CacheRequest object;
 //        String body = object.getBody();

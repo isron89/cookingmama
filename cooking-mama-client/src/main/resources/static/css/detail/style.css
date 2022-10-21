@@ -81,13 +81,90 @@ h1 {
   }
 }
 
+.container {
+	max-width: 1500px;
+	margin: 5px auto;
+	background: #fff;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+comment {
+	display: block;
+	transition: all 1s;
+}
+.commentClicked {
+	min-height: 5px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	padding: 10px 8px;
+}
+
+button.primaryContained {
+	background: orange;
+	color: #fff;
+	padding: 10px 10px;
+	border: none;
+	margin-top: 0px;
+	cursor: pointer;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+	transition: 1s all;
+	font-size: 8px;
+	border-radius: 5px;
+}
+
+button.primaryContained:hover {
+	background: brown;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
 
 .centerimg {
   display: block;
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
-  width: 70%;
+  width: 80%;
 }
 
 p {
