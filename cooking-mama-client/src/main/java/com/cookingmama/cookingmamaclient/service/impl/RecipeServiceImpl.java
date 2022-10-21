@@ -35,7 +35,7 @@ public class RecipeServiceImpl {
     private String myrecipes;
 
 
-    @Value("${resource.edit}")
+    @Value("${resource.edit}/{id}")
     private String updateRecipe;
 
 
@@ -83,9 +83,9 @@ public class RecipeServiceImpl {
         System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
         return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
     }
-    public Recipe update(Recipe update) {
-
-        return restTemplate.postForObject(updateRecipe, update, Recipe.class);
+    public Recipe update(Long id, Recipe update) {
+        System.out.println(update + "<<< data sent");
+        return restTemplate.postForObject(updateRecipe, update, Recipe.class, id);
 
     }
 }

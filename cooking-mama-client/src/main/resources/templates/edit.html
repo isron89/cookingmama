@@ -28,16 +28,19 @@
 
 
 <div class="container min-vh-100 d-flex aligns-items-center justify-content-center create-form" >
-    <form class="w-75 pt-3 p-3" method="post" th:action="@{/updateRecipe/}+${editRecipe.id}" th:object="${updateRecipe}">
+    <form class="w-75 pt-3 p-3" method="post" th:action="@{/updateRecipe/{id}(id=${editRecipe.id})}" th:object="${editRecipe}">
 
 <!--        <form class="w-75 pt-3 p-3" method="post" th:action="@{/createRecipe/{id} (id=${recipe.id})" th:object="${updateRecipe}">-->
 
 
         <div class="row mb-3 align-items-center">
+<!--            <div>-->
+<!--                <input hidden th:utext="*{id}" name="id">-->
+<!--            </div>-->
             <label th:for="name" class="col-sm-2 col-form-label">Recipe Name</label>
             <div class="col-sm-10">
 <!--                <input type="text" th:field="*{name}" class="form-control" id="inputEmail3">-->
-                <input type="text" class="form-control" th:id="name" th:value="${editRecipe.name}" th:name="name">
+                <input type="text" class="form-control" id="name" th:field="*{name}" name="name">
 
                 <!--                <input type="text" class="form-control" id="inputEmail3" th:field="*{}">-->
             </div>
@@ -46,7 +49,7 @@
             <label th:for="ingredients" class="col-sm-2 col-form-label">Ingredient</label>
             <div class="col-sm-10">
                 <!--                <input type="text" class="form-control" id="inputPassword4">-->
-                <textarea class="form-control" th:id="ingredients" th:name="ingredients" rows="3" th:inline="text">[[${editRecipe.ingredients}]]</textarea>
+                <textarea class="form-control" id="ingredients" name="ingredients" rows="3" th:field="*{ingredients}"></textarea>
 <!--                <textarea class="form-control" th:field="*{ingedients}" id="exampleFormControlTextarea1" rows="3"></textarea>-->
 
                 <!--                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{}"></textarea>-->
@@ -56,7 +59,7 @@
             <label th:for="howto" class="col-sm-2 col-form-label">How to cook</label>
             <div class="col-sm-10">
                 <!--                <input type="textarea" class="form-control" id="inputPassword3">-->
-                <textarea class="form-control" th:id="howto" rows="3" th:name="howto" th:inline="text">[[${editRecipe.howto}]]</textarea>
+                <textarea class="form-control" th:id="howto" rows="3" th:name="howto" th:field="*{howto}"></textarea>
 <!--                <textarea class="form-control" id="exampleFormControlTextarea2" th:field="*{howto}" rows="3"></textarea>-->
 
                 <!--                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
@@ -77,58 +80,58 @@
 <!--            </div>-->
 
 <!--        </div>-->
-<!--        <fieldset class="row mb-3">-->
-<!--            <legend class="col-form-label col-sm-2 pt-0">Choose Audience</legend>-->
-<!--            <div class="col-sm-10">-->
-<!--                <div class="form-check">-->
-<!--                    <th:block th:if="${editRecipe.publik == false}">-->
-<!--                    <input class="form-check-input" th:type="radio" th:name="publik" th:id="publik"  th:value="false" checked>-->
-<!--&lt;!&ndash;                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>&ndash;&gt;-->
+        <fieldset class="row mb-3">
+            <legend class="col-form-label col-sm-2 pt-0">Choose Audience</legend>
+            <div class="col-sm-10">
+                <div class="form-check">
+                    <th:block th:if="${editRecipe.publik == false}">
+                    <input class="form-check-input" type="radio" th:field="*{publik}" name="publik1" id="publik1"  th:value="false" checked>
+<!--                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>-->
 
-<!--                    <label class="form-check-label" th:for="publik">-->
-<!--                        Private-->
+                    <label class="form-check-label" for="publik1">
+                        Private
+                    </label>
+                    </th:block>
+
+                    <th:block th:if="${editRecipe.publik == true}">
+                        <input class="form-check-input" type="radio" th:field="*{publik}" name="publik2" id="publik2" th:value="false">
+                        <!--                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>-->
+
+                        <label class="form-check-label" for="publik2">
+                            Private
+                        </label>
+                    </th:block>
+                </div>
+                <div class="form-check">
+                    <th:block th:if="${editRecipe.publik == true}">
+                        <input class="form-check-input" th:field="*{publik}" type="radio" name="publik3" id="publik3" th:value="true" checked>
+                        <!--                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>-->
+
+                        <label class="form-check-label" for="publik3">
+                            public
+                        </label>
+                    </th:block>
+
+                    <th:block th:if="${editRecipe.publik == false}">
+                        <input class="form-check-input" type="radio" th:field="*{publik}" name="publik4" id="publik4" th:value="true">
+                        <!--                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>-->
+
+                        <label class="form-check-label" for="publik4">
+                            public
+                        </label>
+                    </th:block>
+                </div>
+
+<!--                <div class="form-check">-->
+<!--                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">-->
+<!--&lt;!&ndash;                    <input class="form-check-input" type="radio" th:value="true" th:field="*{publik}" name="gridRadios" id="gridRadios2" value="option2">&ndash;&gt;-->
+
+<!--                    <label class="form-check-label" for="gridRadios2">-->
+<!--                        Public-->
 <!--                    </label>-->
-<!--                    </th:block>-->
-
-<!--                    <th:block th:if="${editRecipe.publik == true}">-->
-<!--                        <input class="form-check-input" th:type="radio" th:name="publik" th:id="publik" th:value="false">-->
-<!--                        &lt;!&ndash;                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>&ndash;&gt;-->
-
-<!--                        <label class="form-check-label" th:for="publik">-->
-<!--                            Private-->
-<!--                        </label>-->
-<!--                    </th:block>-->
 <!--                </div>-->
-<!--                <div class="form-check">-->
-<!--                    <th:block th:if="${editRecipe.publik == true}">-->
-<!--                        <input class="form-check-input" th:type="radio" th:name="publik" th:id="publik" th:value="true" checked>-->
-<!--                        &lt;!&ndash;                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>&ndash;&gt;-->
-
-<!--                        <label class="form-check-label" th:for="publik">-->
-<!--                            public-->
-<!--                        </label>-->
-<!--                    </th:block>-->
-
-<!--                    <th:block th:if="${editRecipe.publik == false}">-->
-<!--                        <input class="form-check-input" th:type="radio" th:name="publik" th:id="publik" th:value="true">-->
-<!--                        &lt;!&ndash;                    <input class="form-check-input" type="radio" name="gridRadios" th:value="false" th:field="*{publik}" id="gridRadios1" value="option1" checked>&ndash;&gt;-->
-
-<!--                        <label class="form-check-label" th:for="publik">-->
-<!--                            public-->
-<!--                        </label>-->
-<!--                    </th:block>-->
-<!--                </div>-->
-
-<!--&lt;!&ndash;                <div class="form-check">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                    <input class="form-check-input" type="radio" th:value="true" th:field="*{publik}" name="gridRadios" id="gridRadios2" value="option2">&ndash;&gt;&ndash;&gt;-->
-
-<!--&lt;!&ndash;                    <label class="form-check-label" for="gridRadios2">&ndash;&gt;-->
-<!--&lt;!&ndash;                        Public&ndash;&gt;-->
-<!--&lt;!&ndash;                    </label>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--            </div>-->
-<!--        </fieldset>-->
+            </div>
+        </fieldset>
         <button type="submit" class="btn btn-primary">Save</button>
     </form>
 </div>

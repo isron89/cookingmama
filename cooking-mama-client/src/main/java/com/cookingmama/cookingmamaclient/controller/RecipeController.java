@@ -76,15 +76,18 @@ public class RecipeController {
 //        return "redirect:/home";
 //    }
 
-    @RequestMapping(
-            value = "/updateRecipe/{id}",
-            produces = "application/json",
-            method = RequestMethod.POST
-    )
-    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
-        service.update(saveEdit);
-        return "redirect:/home";
+    @PostMapping(value = "/updateRecipe/{id}")
+    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("editRecipe") Recipe saveEdit) {
+        try {
+            System.out.println(saveEdit + "<<<<< save edit log");
+            service.update(saveEdit.getId(), saveEdit);
+            // idedit
+            return "redirect:/detail/{id}";
+        } catch (Exception err) {
+            System.out.println(saveEdit + "<<<<< save edit log");
+            System.out.println(err.getMessage());
+            return "edit";
+        }
     }
-
 }
 

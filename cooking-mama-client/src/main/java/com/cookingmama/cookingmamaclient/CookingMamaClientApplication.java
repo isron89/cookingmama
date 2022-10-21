@@ -28,14 +28,14 @@ public class CookingMamaClientApplication {
         SpringApplication.run(CookingMamaClientApplication.class, args);
     }
 
-    @RequestMapping("/login")
-    public String Login(){
-        return "login";
-    }
-//    @GetMapping("/register")
-//    public String Register(){
-//        return "register";
+//    @RequestMapping("/login")
+//    public String Login(){
+//        return "login";
 //    }
+////    @GetMapping("/register")
+////    public String Register(){
+////        return "register";
+////    }
 
 
 
