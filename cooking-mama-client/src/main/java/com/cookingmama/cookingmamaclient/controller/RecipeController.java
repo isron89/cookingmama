@@ -17,6 +17,8 @@ import org.springframework.web.client.HttpClientErrorException;
 //import org.springframework.Component
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
@@ -29,9 +31,20 @@ public class RecipeController {
     @Autowired
     private ObjectMapper mapper;
 
+    @Autowired
+    HttpSession session;
+
+
+
+
     @GetMapping("/home")
     public String Home(Model model) {
+        String username = (String) session.getAttribute("Username");
+//        Long id = (Long) session.getAttribute("Userid");
+        //HttpSession
         model.addAttribute("recipes", service.findAll());
+        model.addAttribute("username", username );
+        //model.addAttribute("username", username);
         return "home";
     }
 //    @GetMapping("/private")

@@ -37,11 +37,11 @@
                     <input type="text" name="search" id="search" th:value="${search}" aria-label="Search" class="form-control mr-3" placeholder="Search">
                     <input type="submit" value="Search" class="btn btn-success">
                 </form>
+                <h5 th:text="${username}"></h5>
             </div>
         </nav>
         <div class="container resep-content">
             <h1>All Recipes</h1>
-
 
             <a th:href="@{/create}">
                 <button class="btn-lg btn-success mt-3"><i class="fa fa-plus mr-2"></i> Create Recipes</button>
