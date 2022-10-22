@@ -1,6 +1,7 @@
 package com.cookingmama.cookingmamaclient.service.impl;
 
 import com.cookingmama.cookingmamaclient.dto.Login;
+import com.cookingmama.cookingmamaclient.dto.Rating;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.User;
 import com.cookingmama.cookingmamaclient.service.RestClientService;
@@ -45,6 +46,11 @@ public class RecipeServiceImpl {
     @Value("${resource.search}{search}") //+
     private String recipeSearch;
 
+    @Value("${resource.postRating}")
+    private String postRating;
+
+    @Value("${resource.getRating}/{recipeid}")
+    private String getRating;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -106,4 +112,14 @@ public class RecipeServiceImpl {
 //        System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
         return Arrays.stream(restTemplate.getForObject(recipeSearch, Recipe[].class, search)).collect(Collectors.toList());
     }
+
+    public Rating rating(int rate, String recipeid,String userid,  Rating rating) {
+//        System.out.printf(userid + "ini bintangnya");
+        return restTemplate.postForObject(postRating, rating, Rating.class, rate, recipeid);
+    }
+    public List<Rating> getRating(String recipeid, int rate, Rating rating) {
+//        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
+        return Arrays.stream(restTemplate.getForObject(getRating, Rating[].class)).collect(Collectors.toList());
+    }
+
 }

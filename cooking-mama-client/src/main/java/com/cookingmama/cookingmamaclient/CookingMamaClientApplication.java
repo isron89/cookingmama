@@ -49,43 +49,4 @@ public class CookingMamaClientApplication {
 //        HttpUriRequest request = RequestBuilder.get().setUri("url").build();
 //        client.execute(request);
     }
-
-//    @RequestMapping("/login")
-//    public String Login(){
-//        return "login";
-//    }
-////    @GetMapping("/register")
-////    public String Register(){
-////        return "register";
-////    }
-
-
-
-
-//        model.addAttribute("authorDetail", "namaAuthor");
-//        model.addAttribute("authorTitle", "titleAuthor");
-//        model.addAttribute("authorIngredients", "authorIngredients");
-//        model.addAttribute("authorHowTo", "howToAuthor");
-//        return "detailrecipe";
-//    }
-
-
-
-    @GetMapping("/edit")
-    public String Edit(Model model){
-        model.addAttribute("authorEdit", "Singgih");
-//        CacheRequest object;
-//        String body = object.getBody();
-//        Gson gson = new Gson();
-//        Map<String, Object> map = gson.fromJson(body, HashMap.class);
-//        Map<String, Object> data = (Map<String, Object>) map.get("data");
-//        Map<String, Object> creditTerm = (Map<String, Object>) data.get("MS8B50FHS");
-//        String creditTermValue = creditTerm.get("creditTerm").toString();
-//        toStringSystem.out.println(creditTermValue);
-        return "edit";
-    }
-
-
-
-
 }
