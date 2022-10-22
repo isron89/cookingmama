@@ -37,7 +37,12 @@
                     <input type="text" name="search" id="search" th:value="${search}" aria-label="Search" class="form-control mr-3" placeholder="Search">
                     <input type="submit" value="Search" class="btn btn-success">
                 </form>
-                <h5 th:text="${username}"></h5>
+                <div>
+                    <h5 th:text="${username}"></h5>
+                    <form th:action="@{/destroy}" method="post">
+                        <input type="submit" value="Logout" />
+                    </form>
+                </div>
             </div>
         </nav>
         <div class="container resep-content">

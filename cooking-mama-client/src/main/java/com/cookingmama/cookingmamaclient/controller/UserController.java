@@ -93,6 +93,12 @@ public class UserController {
         System.out.println(token);
         return "redirect:/home";
     }
+
+    @PostMapping("/destroy")
+    public String destroySession(HttpServletRequest request) {
+        request.getSession().invalidate();
+        return "redirect:/login";
+    }
 //    @GetMapping("/testlogin")
 //    public String testlogin(Model model, HttpSession session){
 //        String username = (String) session.getAttribute("Username");
