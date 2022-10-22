@@ -34,6 +34,11 @@ public class RecipeController {
         model.addAttribute("recipes", service.findAll());
         return "home";
     }
+//    @GetMapping("/private")
+//    public String Private(Model model){
+//        model.addAttribute("recipes", service.MyRecipes());
+//        return "private";
+//    }
 
     @GetMapping("/private")
     public String Private(Model model) {
@@ -61,8 +66,8 @@ public class RecipeController {
     }
 
     @GetMapping("/detail/{id}")
-    public String getRecipesId(@PathVariable Long id, String name, Model model, Recipe recipe) {
-        model.addAttribute("detail", service.getDetail(id, recipe));
+    public String getRecipesId (@PathVariable Long id, Model model, Recipe recipe){
+        model.addAttribute("detail",service.getDetail( id, recipe));
         return "detailrecipe";
     }
 
@@ -98,6 +103,12 @@ public class RecipeController {
             return "edit";
         }
 
+    }
+
+    @RequestMapping(value = "search", method = RequestMethod.GET)
+    public String Home(@RequestParam (value = "search", required = false) String search, Model model) {
+        model.addAttribute("recipes", service.searchRecipe(search));
+        return "home";
     }
 }
 
