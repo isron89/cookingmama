@@ -4,6 +4,7 @@ import com.cookingmama.cookingmamaclient.dto.Login;
 import com.cookingmama.cookingmamaclient.dto.Rating;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.User;
+import com.cookingmama.cookingmamaclient.dto.Comment;
 import com.cookingmama.cookingmamaclient.service.RestClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,6 +52,9 @@ public class RecipeServiceImpl {
 
     @Value("${resource.getRating}/{recipeid}")
     private String getRating;
+
+    @Value("${resource.postComment}/{recipeid")
+    private String postComment;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -120,6 +124,11 @@ public class RecipeServiceImpl {
     public List<Rating> getRating(String recipeid, int rate, Rating rating) {
 //        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
         return Arrays.stream(restTemplate.getForObject(getRating, Rating[].class)).collect(Collectors.toList());
+    }
+
+    public Comment comment(String text, String recipeid,String userid, Comment comment) {
+//        System.out.printf(userid + "ini commentnya");
+        return restTemplate.postForObject(postComment, comment, Comment.class, text, recipeid);
     }
 
 }
