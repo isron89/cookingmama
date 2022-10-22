@@ -45,6 +45,7 @@ public class UserController {
     @PostMapping(value = "/loginUser")
     public String Login(@Validated @ModelAttribute("newLogin") Login login) {
         service.login(login);
+        // save user data to session / local storage browser
         return "redirect:/home";
     }
 }
