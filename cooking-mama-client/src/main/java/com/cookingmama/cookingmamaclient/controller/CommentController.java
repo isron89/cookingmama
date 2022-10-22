@@ -3,6 +3,7 @@ package com.cookingmama.cookingmamaclient.controller;
 
 import com.cookingmama.cookingmamaclient.dto.Rating;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
+import com.cookingmama.cookingmamaclient.dto.Comment;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,10 +19,10 @@ public class CommentController {
     @Autowired
     private RecipeServiceImpl service;
 
-    @RequestMapping(value = "/postRating/{recipeid}/{userid}")
-    public String postRating(@PathVariable String recipeid, @PathVariable String userid, Model model, Rating rating, int rate) { //, @PathVariable String "77"
+    @RequestMapping(value = "/postComment/{recipeid}/{userid}")
+    public String postComment(@PathVariable String recipeid, @PathVariable String userid, Model model, Comment comment, String text) { //, @PathVariable String "77"
 //        System.out.println(rate + "adaa gak bintangnya");
-        model.addAttribute("postrating", service.rating(rate, recipeid, userid,rating));
+        model.addAttribute("postcomment", service.comment(text, recipeid, userid, comment));
         return "redirect:/detail/{recipeid}";
     }
 }

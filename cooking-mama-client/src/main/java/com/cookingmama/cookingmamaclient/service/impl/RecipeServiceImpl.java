@@ -128,7 +128,7 @@ public class RecipeServiceImpl {
 
     public Comment comment(String text, String recipeid,String userid, Comment comment) {
 //        System.out.printf(userid + "ini commentnya");
-        return restTemplate.postForObject(postComment, comment, Comment.class, comment, recipeid);
+        return restTemplate.postForObject(postComment, comment, Comment.class, text, recipeid);
     }
 
 }
