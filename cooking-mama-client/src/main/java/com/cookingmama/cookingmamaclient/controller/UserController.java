@@ -84,14 +84,16 @@ public class UserController {
 //        request.getSession().setAttribute("Username", userLogin.getUsername());
 //        request.getSession().setAttribute("Userid", userLogin.getId());
 
-        //Work
-        System.out.println(session.getAttribute("Userid"));
-        System.out.println(session.getAttribute("Username"));
-        System.out.println(session.getAttribute("Token"));
-        //not work
+        //not work or old session
+        System.out.println("Old session");
         System.out.println(userid);
         System.out.println(username);
-        System.out.println(token);
+//        System.out.println(token);
+        //Work or new session
+        System.out.println("New session");
+        System.out.println(session.getAttribute("Userid"));
+        System.out.println(session.getAttribute("Username"));
+//        System.out.println(session.getAttribute("Token"));
         return "redirect:/home";
     }
 

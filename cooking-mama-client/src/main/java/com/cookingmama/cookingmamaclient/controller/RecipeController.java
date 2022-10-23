@@ -3,22 +3,16 @@ package com.cookingmama.cookingmamaclient.controller;
 import com.cookingmama.cookingmamaclient.dto.MessageDTO;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.Rating;
-import com.cookingmama.cookingmamaclient.service.impl.RecipeService;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.bouncycastle.math.raw.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
-//import org.springframework.Component
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -50,7 +44,6 @@ public class RecipeController {
 //        model.addAttribute("recipes", service.MyRecipes());
 //        return "private";
 //    }
-
     @GetMapping("/private")
     public String Private(Model model) {
         model.addAttribute("recipes", service.MyRecipes());
@@ -94,14 +87,11 @@ public class RecipeController {
         model.addAttribute("editRecipe", service.getDetail(id, recipe));
         return "edit";
     }
-
 //    @PostMapping(value = "/updateRecipe/{id}")
 //    public String saveEdit(@PathVariable Long id ,@Validated @ModelAttribute("updateRecipe") Recipe saveEdit) {
 //        service.update(saveEdit);
 //        return "redirect:/home";
 //    }
-
-
     @PostMapping(value = "/updateRecipe/{id}")
     public String saveEdit(@PathVariable Long id, @Validated @ModelAttribute("editRecipe") Recipe saveEdit) {
         try {
@@ -114,7 +104,6 @@ public class RecipeController {
             System.out.println(err.getMessage());
             return "edit";
         }
-
     }
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
@@ -123,4 +112,3 @@ public class RecipeController {
         return "home";
     }
 }
-

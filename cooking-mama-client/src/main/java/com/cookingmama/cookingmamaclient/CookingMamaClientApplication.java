@@ -13,15 +13,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
-//import org.apache.http.Header;
-//import org.apache.http.HttpHeaders;
-//import org.apache.http.client.HttpClient;
-//
-//import org.apache.http.client.methods.*;
-//import org.apache.http.impl.client.HttpClients;
-//
-//import org.apache.http.message.BasicHeader;
-
 import java.io.IOException;
 import java.util.Arrays;
 

@@ -40,9 +40,8 @@
                 </form>
                 <div class="dropdown">
                     <div th:if="${username}" class="dropbtn" >
-                        <h5 th:text="${username}">
-                            <!-- <i class="fa fa-caret-down"></i>-->
-                        </h5>
+                        <h5 th:text="${username}"><i style="float: right;" class="fa fa-caret-down"></i></h5>
+<!--                        <i style="align-content: center; margin-top: -10px; padding-top: -10px;" class="fa fa-caret-down"></i>-->
                         <div class="dropdown-content" id="myDropdown">
                             <a>
                             <form th:action="@{/logout}" method="post">
