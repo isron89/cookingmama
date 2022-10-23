@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import javax.xml.stream.events.Comment;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -44,6 +45,9 @@ public class RecipeServiceImpl {
 
     @Value("${resource.search}{search}") //+
     private String recipeSearch;
+
+    @Value("${resource.getcomment}/{id}")
+    private String recipeComment;
 
 
     @Autowired
@@ -106,4 +110,7 @@ public class RecipeServiceImpl {
 //        System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
         return Arrays.stream(restTemplate.getForObject(recipeSearch, Recipe[].class, search)).collect(Collectors.toList());
     }
+
+
+
 }

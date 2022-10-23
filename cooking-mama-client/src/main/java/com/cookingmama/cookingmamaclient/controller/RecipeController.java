@@ -68,6 +68,8 @@ public class RecipeController {
     @GetMapping("/detail/{id}")
     public String getRecipesId (@PathVariable Long id, Model model, Recipe recipe){
         model.addAttribute("detail",service.getDetail( id, recipe));
+
+
         return "detailrecipe";
     }
 
@@ -110,5 +112,7 @@ public class RecipeController {
         model.addAttribute("recipes", service.searchRecipe(search));
         return "home";
     }
+
+
 }
 

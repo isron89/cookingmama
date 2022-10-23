@@ -52,9 +52,9 @@
                     <p> <img src = "https://kanalwisata.com/wp-content/uploads/2020/05/baso-aci.jpg" class="centerimg"> </p>
                     <br><br>
                     <p style="text-align:center; margin-top: 50px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">INGREDIENTS:</p>
-                    <p style="margin-left: 80px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;" th:text="${detail.howto}" ></p>
+                    <p style="white-space: pre; margin-left: 80px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;" th:utext="${detail.ingredients}" ></p>
                     <p style="text-align:center; margin-top: 80px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">HOW TO COOK: </p>
-                    <p style="margin-left: 80px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify;" th:text="${authorHowTo}">
+                    <p style="margin-left: 80px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify; white-space: pre;" th:utext="${detail.howto}">
                     </p>
                     <div style="margin-top: 50px; margin-left: 400px;">
                         <a th:href="@{/edit/}+${recipe.id}"> <button type="button" class="btn btn-light"> <svg xmlns="http://www.w3.org/2000/svg" color="black" width="35" height="40" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -116,5 +116,9 @@
                 </div>
             </div>
         </div>
+    <div th:each="comment : ${comments}">
+        <p th:text="${comment.text}"> </p>
+
+    </div>
     </body>
 </html>
