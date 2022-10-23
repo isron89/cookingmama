@@ -5,10 +5,6 @@ import com.cookingmama.cookingmamaclient.dto.User;
 import com.cookingmama.cookingmamaclient.dto.UserLogin;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeServiceImpl;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,7 +20,6 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 @SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
 @Controller
@@ -61,8 +56,14 @@ public class UserController {
     }
 
     @PostMapping(value = "/loginUser")
+
+//    public String Login(@Validated @ModelAttribute("newLogin") Login login) {
+//        service.login(login);
+//        // save user data to session / local storage browser
+
     public String Login(@Validated @ModelAttribute("newLogin") Login login, HttpServletRequest request) throws JsonProcessingException {
         //Login user = service.login(login);
+            service.login(login);
         //ResponseEntity<UserLogin> response = restTemplate.postForEntity("http://localhost:8080/auth/signin", login, UserLogin.class);
         ResponseEntity<UserLogin> response = restTemplate.postForEntity("http://localhost:8080/api/auth/signin",login, UserLogin.class);
         //String token = String.valueOf(response.getBody());
@@ -88,12 +89,17 @@ public class UserController {
         System.out.println("Old session");
         System.out.println(userid);
         System.out.println(username);
+<<<<<<< HEAD
 //        System.out.println(token);
         //Work or new session
         System.out.println("New session");
         System.out.println(session.getAttribute("Userid"));
         System.out.println(session.getAttribute("Username"));
 //        System.out.println(session.getAttribute("Token"));
+=======
+        System.out.println(token);
+
+>>>>>>> a78817b065e085d7c01f0667ad3d9dab5f20247e
         return "redirect:/home";
     }
 

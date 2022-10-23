@@ -7,6 +7,7 @@ import com.cookingmama.cookingmamaclient.dto.User;
 import com.cookingmama.cookingmamaclient.dto.Comment;
 import com.cookingmama.cookingmamaclient.interceptor.HeaderRequestInterceptor;
 import com.cookingmama.cookingmamaclient.interceptor.TokenHeader;
+import com.cookingmama.cookingmamaclient.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -19,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,7 +41,9 @@ public class RecipeServiceImpl {
     @Value("${resource.getId}/{id}")
     private String idResource;
 
-    @Value("${resource.myrecipes}")
+//    @Value("${resource.myrecipes}")
+
+    @Value("${resource.myrecipes}/{userid}")
     private String myrecipes;
 
     @Value("${resource.delete}/{id}")
@@ -50,13 +55,16 @@ public class RecipeServiceImpl {
     @Value("${resource.search}{search}") //+
     private String recipeSearch;
 
+    @Value("${resource.getcomment}/{recipeid}")
+    private String recipeComment;
+
     @Value("${resource.postRating}")
     private String postRating;
 
     @Value("${resource.getRating}/{recipeid}")
     private String getRating;
 
-    @Value("${resource.postComment}/{recipeid")
+    @Value("${resource.postComment}/{recipeid}")
     private String postComment;
 
     @Autowired
@@ -84,7 +92,6 @@ public class RecipeServiceImpl {
 ////        System.out.println(Arrays.stream(restTemplate.getForObject(resource, Recipe[].class)).collect(Collectors.toList()));
 //        return Arrays.stream(restTemplate.getForObject(resourcePrivate, Recipe[].class)).collect(Collectors.toList());
 //    }
-
     public Recipe recipe(Recipe recipe) {
         String token = (String) session.getAttribute("Token");
         interceptors.add(new HeaderRequestInterceptor("Authorization", "Bearer " +token));
@@ -121,12 +128,21 @@ public class RecipeServiceImpl {
 //    System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
 //    return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
 //}
-    public List<Recipe> MyRecipes() {
+
+//    public List<Recipe> MyRecipes() {
+//        String token = (String) session.getAttribute("Token");
+//        interceptors.add(new HeaderRequestInterceptor("Authorization", "Bearer " + token));
+//        restTemplate.setInterceptors(interceptors);
+//        System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
+//        return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
+//    }
+
+    public List<Recipe> MyRecipes(Long userid) {
         String token = (String) session.getAttribute("Token");
         interceptors.add(new HeaderRequestInterceptor("Authorization", "Bearer " +token));
         restTemplate.setInterceptors(interceptors);
-        System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
-        return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
+//        System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
+        return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class, userid)).collect(Collectors.toList());
     }
 
     public Recipe update(Long id, Recipe update) {
@@ -158,6 +174,7 @@ public class RecipeServiceImpl {
         restTemplate.setInterceptors(interceptors);
         return restTemplate.postForObject(postRating, rating, Rating.class, rate, recipeid);
     }
+
     public List<Rating> getRating(String recipeid, int rate, Rating rating) {
 //        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
         String token = (String) session.getAttribute("Token");
@@ -172,5 +189,10 @@ public class RecipeServiceImpl {
         interceptors.add(new HeaderRequestInterceptor("Authorization", "Bearer " +token));
         restTemplate.setInterceptors(interceptors);
         return restTemplate.postForObject(postComment, comment, Comment.class, text, recipeid);
+    }
+    // LIST COMMENT
+    public List<Comment> getComment(String recipeid) {
+//        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
+        return Arrays.stream(restTemplate.getForObject(recipeComment, Comment[].class, recipeid)).collect(Collectors.toList());
     }
 }

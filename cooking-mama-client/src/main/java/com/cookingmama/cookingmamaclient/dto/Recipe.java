@@ -18,7 +18,6 @@ public class Recipe {
 
     @Column(name = "name")
     private String name;
-
     @Column(name = "ingredients")
 
     private String ingredients;

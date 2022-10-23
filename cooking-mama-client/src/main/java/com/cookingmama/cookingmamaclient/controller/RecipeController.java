@@ -1,5 +1,6 @@
 package com.cookingmama.cookingmamaclient.controller;
 
+import com.cookingmama.cookingmamaclient.dto.Comment;
 import com.cookingmama.cookingmamaclient.dto.MessageDTO;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.Rating;
@@ -32,10 +33,12 @@ public class RecipeController {
     @GetMapping("/home")
     public String Home(Model model) {
         String username = (String) session.getAttribute("Username");
+        Long userid = (Long) session.getAttribute("Userid");
 //        Long id = (Long) session.getAttribute("Userid");
         //HttpSession
         model.addAttribute("recipes", service.findAll());
         model.addAttribute("username", username );
+        model.addAttribute("userid", userid );
         //model.addAttribute("username", username);
         return "home";
     }
@@ -46,18 +49,36 @@ public class RecipeController {
 //    }
     @GetMapping("/private")
     public String Private(Model model) {
-        model.addAttribute("recipes", service.MyRecipes());
-        return "private";
+        try{
+            String username = (String) session.getAttribute("Username");
+            Long userid = (Long) session.getAttribute("Userid");
+            model.addAttribute("recipes", service.MyRecipes(userid));
+            model.addAttribute("userid", userid );
+            return "private";
+        }catch (Exception err){
+            System.out.println(err.getMessage() + "<<<<No recipes");
+            return "private";
+        }
+
     }
 
     @GetMapping("/create")
     public String Create(Model model) {
+        Long useridSession = (Long) session.getAttribute("Userid");
+        String usernameSession = (String) session.getAttribute("Username");
         model.addAttribute("newRecipe", new Recipe());
+        model.addAttribute("useridSession", useridSession );
+        model.addAttribute("usernameSession", usernameSession );
         return "create";
     }
 
     @PostMapping(value = "/createRecipe")
     public String create(@Validated @ModelAttribute("newRecipe") Recipe recipe) {
+//        String name=recipe.getName();
+//        String ingredients=recipe.getIngredients();
+//        String howto=recipe.getHowto();
+        Long useridSession = (Long) session.getAttribute("Userid");
+        recipe.setUserid(useridSession.toString());
         service.recipe(recipe);
         return "redirect:/home";
     }
@@ -71,9 +92,34 @@ public class RecipeController {
 
     @GetMapping("/detail/{id}")
     public String getRecipesId (@PathVariable Long id, Model model, Recipe recipe){
-        model.addAttribute("detail",service.getDetail( id, recipe));
-        model.addAttribute("postRating", new Rating());
-        return "detailrecipe";
+        // For get Detail Recipe
+        try{
+            model.addAttribute("detail",service.getDetail( id, recipe));
+            Long useridSession = (Long) session.getAttribute("Userid");
+            // For new post Rating
+            model.addAttribute("postRating", new Rating());
+            String sameID = useridSession.toString();
+            //check userid resep and userid session is same?
+            String useridDetail = service.getDetail(id,recipe).getUserid();
+            System.out.println(useridDetail + "<<<<<<< user id detail");
+            Boolean isSameUserID = false;
+            System.out.println(useridDetail.equals(sameID));
+            System.out.println(useridSession.toString() + " user id session");
+            if (useridDetail.equals(sameID)){
+                isSameUserID = true;
+            }
+            model.addAttribute("isSameUserID",isSameUserID);
+            // For get all the comment for this recipe
+            String recipeid = Long.toString(id);
+            System.out.println(recipeid + "ini id resep");
+            model.addAttribute("recipeComments", service.getComment(String.valueOf(id)));
+
+            System.out.println(isSameUserID);
+            return "detailrecipe";
+        }catch(Exception err){
+            System.out.println(err.getMessage() + "<<<<error");
+            return "detailrecipe";
+        }
     }
 
     @RequestMapping(value = "/deleteRecipe/{id}")
@@ -108,7 +154,13 @@ public class RecipeController {
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public String Home(@RequestParam (value = "search", required = false) String search, Model model) {
-        model.addAttribute("recipes", service.searchRecipe(search));
-        return "home";
+        try{
+            model.addAttribute("recipes", service.searchRecipe(search));
+            return "home";
+        }catch (Exception err){
+            System.out.println(err.getMessage() + "<<No recipes");
+            return "home";
+        }
+
     }
 }

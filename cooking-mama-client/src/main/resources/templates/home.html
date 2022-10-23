@@ -58,13 +58,13 @@
             <h1>All Recipes</h1>
 
             <a th:href="@{/create}">
-                <button class="btn-lg btn-success mt-3"><i class="fa fa-plus mr-2"></i> Create Recipes</button>
+                <button class="btn-lg btn-success mt-3"><i class="fa fa-plus mr-2"></i> Create New Recipe</button>
             </a>
             <div class="row card-content">
                 <div class="col-lg-4 col-sm-6" th:each="recipe : ${recipes}">
                     <div class="card">
                         <div class="d-flex flex-row-reverse">
-                            <span class="badge bg-warning text-white" th:if="${recipe.userid == '77'}">Resepku</span>
+                            <span class="badge bg-warning text-white" th:if="${recipe.userid}==${userid}">My Recipe</span>
                         </div>
 
                         <img alt="..." class="card-img-top" src="" th:src="@{/images/cookma.png}">
@@ -82,7 +82,7 @@
                             </div>
                             <p class="card-text" th:text="${recipe.ingredients}">Some quick example text to build on the
                                 card title and make up the bulk of the card's content.</p>
-                            <a class="btn btn-primary" th:href="@{/detail/}+${recipe.id}">Detail Resep</a>
+                            <a class="btn btn-primary" th:href="@{/detail/}+${recipe.id}">Recipe Detail</a>
                         </div>
                     </div>
                 </div>
