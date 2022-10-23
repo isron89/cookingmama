@@ -1,7 +1,6 @@
 package com.cookingmama.cookingmamaclient.controller;
 
 import com.cookingmama.cookingmamaclient.dto.Login;
-import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.User;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
