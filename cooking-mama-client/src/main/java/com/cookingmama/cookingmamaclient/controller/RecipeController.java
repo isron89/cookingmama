@@ -1,5 +1,6 @@
 package com.cookingmama.cookingmamaclient.controller;
 
+import com.cookingmama.cookingmamaclient.dto.Comment;
 import com.cookingmama.cookingmamaclient.dto.MessageDTO;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
 import com.cookingmama.cookingmamaclient.dto.Rating;
@@ -68,10 +69,18 @@ public class RecipeController {
 
     @GetMapping("/detail/{id}")
     public String getRecipesId (@PathVariable Long id, Model model, Recipe recipe){
+        // For get Detail Recipe
         model.addAttribute("detail",service.getDetail( id, recipe));
 
+        // For new post Rating
         model.addAttribute("postRating", new Rating());
 
+        // For get all the comment for this recipe
+
+        String recipeid = Long.toString(id);
+        System.out.println(recipeid + "ini id resep");
+        model.addAttribute("recipeComments", service.getComment(String.valueOf(id)));
+        System.out.println( service.getComment(String.valueOf(id)) +"<<<<<<list comment");
         return "detailrecipe";
     }
 

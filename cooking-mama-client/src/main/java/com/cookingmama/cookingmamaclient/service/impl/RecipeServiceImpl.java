@@ -43,7 +43,7 @@ public class RecipeServiceImpl {
     @Value("${resource.search}{search}") //+
     private String recipeSearch;
 
-    @Value("${resource.getcomment}/{id}")
+    @Value("${resource.getcomment}/{recipeid}")
     private String recipeComment;
 
     @Value("${resource.postRating}")
@@ -52,7 +52,7 @@ public class RecipeServiceImpl {
     @Value("${resource.getRating}/{recipeid}")
     private String getRating;
 
-    @Value("${resource.postComment}/{recipeid")
+    @Value("${resource.postComment}/{recipeid}")
     private String postComment;
 
 
@@ -130,6 +130,12 @@ public class RecipeServiceImpl {
     public Comment comment(String text, String recipeid,String userid, Comment comment) {
 //        System.out.printf(userid + "ini commentnya");
         return restTemplate.postForObject(postComment, comment, Comment.class, text, recipeid);
+    }
+
+    // LIST COMMENT
+    public List<Comment> getComment(String recipeid) {
+//        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
+        return Arrays.stream(restTemplate.getForObject(recipeComment, Comment[].class, recipeid)).collect(Collectors.toList());
     }
 
 
