@@ -2,6 +2,7 @@ package com.cookingmama.cookingmamaclient.controller;
 
 import com.cookingmama.cookingmamaclient.dto.MessageDTO;
 import com.cookingmama.cookingmamaclient.dto.Recipe;
+import com.cookingmama.cookingmamaclient.dto.Rating;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeService;
 import com.cookingmama.cookingmamaclient.service.impl.RecipeServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -69,6 +70,7 @@ public class RecipeController {
     public String getRecipesId (@PathVariable Long id, Model model, Recipe recipe){
         model.addAttribute("detail",service.getDetail( id, recipe));
 
+        model.addAttribute("postRating", new Rating());
 
         return "detailrecipe";
     }

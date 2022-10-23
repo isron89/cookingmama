@@ -1,16 +1,13 @@
 package com.cookingmama.cookingmamaclient.service.impl;
 
-import com.cookingmama.cookingmamaclient.dto.Login;
-import com.cookingmama.cookingmamaclient.dto.Recipe;
-import com.cookingmama.cookingmamaclient.dto.User;
-import com.cookingmama.cookingmamaclient.service.RestClientService;
+import com.cookingmama.cookingmamaclient.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import javax.xml.stream.events.Comment;
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -48,6 +45,15 @@ public class RecipeServiceImpl {
 
     @Value("${resource.getcomment}/{id}")
     private String recipeComment;
+
+    @Value("${resource.postRating}")
+    private String postRating;
+
+    @Value("${resource.getRating}/{recipeid}")
+    private String getRating;
+
+    @Value("${resource.postComment}/{recipeid")
+    private String postComment;
 
 
     @Autowired
@@ -111,6 +117,20 @@ public class RecipeServiceImpl {
         return Arrays.stream(restTemplate.getForObject(recipeSearch, Recipe[].class, search)).collect(Collectors.toList());
     }
 
+
+    public Rating rating(int rate, String recipeid,String userid,  Rating rating) {
+//        System.out.printf(userid + "ini bintangnya");
+        return restTemplate.postForObject(postRating, rating, Rating.class, rate, recipeid);
+    }
+    public List<Rating> getRating(String recipeid, int rate, Rating rating) {
+//        System.out.println(restTemplate.getForObject(idResource, Recipe.class, id));
+        return Arrays.stream(restTemplate.getForObject(getRating, Rating[].class)).collect(Collectors.toList());
+    }
+
+    public Comment comment(String text, String recipeid,String userid, Comment comment) {
+//        System.out.printf(userid + "ini commentnya");
+        return restTemplate.postForObject(postComment, comment, Comment.class, text, recipeid);
+    }
 
 
 }
