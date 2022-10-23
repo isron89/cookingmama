@@ -13,6 +13,18 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
+//import org.apache.http.Header;
+//import org.apache.http.HttpHeaders;
+//import org.apache.http.client.HttpClient;
+//
+//import org.apache.http.client.methods.*;
+//import org.apache.http.impl.client.HttpClients;
+//
+//import org.apache.http.message.BasicHeader;
+
+import java.io.IOException;
+import java.util.Arrays;
+
 @SpringBootApplication
 @Controller
 public class CookingMamaClientApplication {
@@ -26,5 +38,15 @@ public class CookingMamaClientApplication {
     }
     public static void main(String[] args) {
         SpringApplication.run(CookingMamaClientApplication.class, args);
+//        Header contentTypeHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+//        Header authorizationHeader = new BasicHeader(HttpHeaders.AUTHORIZATION, "Bearer 123token");
+//
+//        List<Header> headers = Arrays.asList(contentTypeHeader, authorizationHeader);
+//
+//        // set custom headers as default headers
+//        HttpClient client = HttpClients.custom().setDefaultHeaders(headers).build();
+//
+//        HttpUriRequest request = RequestBuilder.get().setUri("url").build();
+//        client.execute(request);
     }
 }

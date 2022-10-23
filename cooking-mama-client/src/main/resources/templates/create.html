@@ -30,7 +30,7 @@
         <div class="row mb-3 align-items-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Recipe Name</label>
             <div class="col-sm-10">
-                <input type="text" name="name" th:field="*{name}" class="form-control border border-warning" id="inputEmail3"/>
+                <input type="text" name="name" th:field="*{name}" class="form-control border border-warning" id="inputEmail3" required/>
 <!--                <input type="text" class="form-control" id="inputEmail3" th:field="*{}">-->
             </div>
         </div>
@@ -38,7 +38,7 @@
             <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label ">Ingredient</label>
             <div class="col-sm-10">
 <!--                <input type="text" class="form-control" id="inputPassword4">-->
-                <textarea class="form-control border border-warning" name="ingredients" id="exampleFormControlTextarea1" rows="3"  th:field="*{ingredients}"></textarea>
+                <textarea class="form-control border border-warning" name="ingredients" id="exampleFormControlTextarea1" rows="3"  th:field="*{ingredients}" required></textarea>
 <!--                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{}"></textarea>-->
             </div>
         </div>
@@ -46,7 +46,7 @@
             <label for="exampleFormControlTextarea2" class="col-sm-2 col-form-label">How to cook</label>
             <div class="col-sm-10">
 <!--                <input type="textarea" class="form-control" id="inputPassword3">-->
-                <textarea class="form-control border border-warning" name="howto" id="exampleFormControlTextarea2" rows="3"  th:field="*{howto}"></textarea>
+                <textarea class="form-control border border-warning" name="howto" id="exampleFormControlTextarea2" rows="3"  th:field="*{howto}" required></textarea>
 <!--                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
             </div>
         </div>
@@ -54,7 +54,7 @@
             <label for="exampleFormControlTextarea4" class="col-sm-2 col-form-label">User ID</label>
             <div class="col-sm-10">
                 <!--                <input type="textarea" class="form-control" id="inputPassword3">-->
-                <input class="form-control border border-warning" name="userid" id="exampleFormControlTextarea4" rows="3"  th:field="*{userid}"/>
+                <input class="form-control border border-warning" th:name="userid" id="exampleFormControlTextarea4" rows="3"  th:field="*{userid}/>
                 <!--                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
             </div>
         </div>

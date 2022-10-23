@@ -31,7 +31,7 @@ public class RecipeServiceImpl {
     private String idResource;
 
 
-    @Value("${resource.myrecipes}")
+    @Value("${resource.myrecipes}/{userid}")
     private String myrecipes;
 
     @Value("${resource.delete}/{id}")
@@ -93,10 +93,10 @@ public class RecipeServiceImpl {
 //    System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
 //    return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
 //}
-    public List<Recipe> MyRecipes() {
+    public List<Recipe> MyRecipes(Long userid) {
 
-        System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
-        return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList());
+//        System.out.println(Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class)).collect(Collectors.toList()));
+        return Arrays.stream(restTemplate.getForObject(myrecipes, Recipe[].class, userid)).collect(Collectors.toList());
     }
 
     public Recipe update(Long id, Recipe update) {
