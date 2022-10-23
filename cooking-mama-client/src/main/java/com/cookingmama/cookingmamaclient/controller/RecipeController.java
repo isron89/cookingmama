@@ -56,18 +56,26 @@ public class RecipeController {
 
     @GetMapping("/private")
     public String Private(Model model) {
-        String username = (String) session.getAttribute("Username");
-        Long userid = (Long) session.getAttribute("Userid");
-        model.addAttribute("recipes", service.MyRecipes(userid));
-        model.addAttribute("userid", userid );
-        return "private";
+        try{
+            String username = (String) session.getAttribute("Username");
+            Long userid = (Long) session.getAttribute("Userid");
+            model.addAttribute("recipes", service.MyRecipes(userid));
+            model.addAttribute("userid", userid );
+            return "private";
+        }catch (Exception err){
+            System.out.println(err.getMessage() + "<<<<No recipes");
+            return "private";
+        }
+
     }
 
     @GetMapping("/create")
     public String Create(Model model) {
         Long useridSession = (Long) session.getAttribute("Userid");
+        String usernameSession = (String) session.getAttribute("Username");
         model.addAttribute("newRecipe", new Recipe());
         model.addAttribute("useridSession", useridSession );
+        model.addAttribute("usernameSession", usernameSession );
         return "create";
     }
 
@@ -76,7 +84,8 @@ public class RecipeController {
 //        String name=recipe.getName();
 //        String ingredients=recipe.getIngredients();
 //        String howto=recipe.getHowto();
-
+        Long useridSession = (Long) session.getAttribute("Userid");
+        recipe.setUserid(useridSession.toString());
         service.recipe(recipe);
         return "redirect:/home";
     }
@@ -93,16 +102,26 @@ public class RecipeController {
         // For get Detail Recipe
         try{
             model.addAttribute("detail",service.getDetail( id, recipe));
-
+            Long useridSession = (Long) session.getAttribute("Userid");
             // For new post Rating
             model.addAttribute("postRating", new Rating());
-
+            String sameID = useridSession.toString();
+            //check userid resep and userid session is same?
+            String useridDetail = service.getDetail(id,recipe).getUserid();
+            System.out.println(useridDetail + "<<<<<<< user id detail");
+            Boolean isSameUserID = false;
+            System.out.println(useridDetail.equals(sameID));
+            System.out.println(useridSession.toString() + " user id session");
+            if (useridDetail.equals(sameID)){
+                isSameUserID = true;
+            }
+            model.addAttribute("isSameUserID",isSameUserID);
             // For get all the comment for this recipe
-
             String recipeid = Long.toString(id);
             System.out.println(recipeid + "ini id resep");
             model.addAttribute("recipeComments", service.getComment(String.valueOf(id)));
-            System.out.println( service.getComment(String.valueOf(id)) +"<<<<<<list comment");
+
+            System.out.println(isSameUserID);
             return "detailrecipe";
         }catch(Exception err){
             System.out.println(err.getMessage() + "<<<<error");
@@ -147,8 +166,14 @@ public class RecipeController {
 
     @RequestMapping(value = "search", method = RequestMethod.GET)
     public String Home(@RequestParam (value = "search", required = false) String search, Model model) {
-        model.addAttribute("recipes", service.searchRecipe(search));
-        return "home";
+        try{
+            model.addAttribute("recipes", service.searchRecipe(search));
+            return "home";
+        }catch (Exception err){
+            System.out.println(err.getMessage() + "<<No recipes");
+            return "home";
+        }
+
     }
 
 

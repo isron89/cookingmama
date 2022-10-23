@@ -19,14 +19,19 @@
             </form>
             <!--            <input type="text" placeholder="Search..">-->
         </div>
-        <a th:text="${authorEdit}"></a></div>
+        <a th:text="${usernameSession}"></a></div>
     </div>
 
 </header>
 <body>
 
 <div class="container min-vh-100 d-flex aligns-items-center justify-content-center create-form" >
+
+
     <form class="w-75 pt-3 p-3 fw-bolder" method="post" th:action="@{/createRecipe}" th:object="${newRecipe}" name="createRecipe">
+        <div class="aligns-items-center text-center justify-content-center">
+            <h3>Create you recipe!</h3>
+        </div>
         <div class="row mb-3 align-items-center">
             <label for="inputEmail3" class="col-sm-2 col-form-label">Recipe Name</label>
             <div class="col-sm-10">
@@ -51,18 +56,19 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="exampleFormControlTextarea4" class="col-sm-2 col-form-label">User ID</label>
+            <label for="userid" class="col-sm-2 col-form-label">User ID</label>
             <div class="col-sm-10">
+                <h5 id="userid" name="userid" th:text="${useridSession}"></h5>
                 <!--                <input type="textarea" class="form-control" id="inputPassword3">-->
-                <input class="form-control border border-warning" th:name="userid" id="exampleFormControlTextarea4" rows="3"  th:field="*{userid}/>
-                <!--                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
+<!--                <input class="form-control border border-warning" th:name="userid" id="exampleFormControlTextarea4" rows="3"  th:value="${useridSession}"/>-->
+<!--                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{}"></textarea>-->
             </div>
         </div>
         <div class="mb-3 row">
             <label for="staticEmail" class="col-sm-2 col-form-label">Author</label>
             <div class="col-sm-10">
 <!--                <h4 id="staticEmail" name="userid" th:text="${author}"></h4>-->
-                <h4 id="staticEmail" name="userid" th:text="${author}"></h4>
+                <h5 id="staticEmail" name="username" th:text="${usernameSession}"></h5>
             </div>
         </div>
 <!--        <div class="row mb-3 align-items-center ">-->
