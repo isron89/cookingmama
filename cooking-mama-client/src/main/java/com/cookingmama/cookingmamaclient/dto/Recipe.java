@@ -4,78 +4,52 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @Data
-
+@Entity
+@Table(name = "recipes")
 public class Recipe {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "name")
     private String name;
-    private String howto;
+    @Column(name = "ingredients")
+
     private String ingredients;
+
+    @Column(name = "howto")
+
+    private String howto;
+
+    @Column(name = "publik")
     private Boolean publik;
-    private Long userid;
 
-    private float stars;
+    @Column(name = "userid")
+    private String userid;
+//    private String steps;
+//    private String image;
 
-    public Long getId(){
-
-        return id;
+    public Recipe() {
     }
-    public void setId(Long id){
-
-        this.id= id;
-    }
-
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String name) {
+    //long id, String name, String ingredients, String recipeModelName, Boolean publik, String userid
+    public Recipe(Long id, String name, String ingredients, String howto, Boolean publik, String userid) {
+        this.id = id;
         this.name = name;
-    }
-
-    public String getHowto() {
-        return howto;
-    }
-
-    public void setHowto(String howto) {
+        this.ingredients = ingredients;
         this.howto = howto;
-    }
-
-    public Boolean getPublik() {
-        return publik;
-    }
-
-    public void setPublik(Boolean publik) {
         this.publik = publik;
-    }
-
-    public Long getUserid() {
-        return userid;
-    }
-
-    public void setUserid(Long userid) {
         this.userid = userid;
     }
 
-    public String getIngredients() {
-        return ingredients;
-    }
-
-    public void setIngredients(String ingredients) {
-        this.ingredients = ingredients;
-    }
-
-    public Float getStars() {
-        return stars;
-    }
-
-    public void setStars(String ingredients) {
-        this.stars = stars;
+    @Override
+    public String toString() {
+        return "RecipeModel [Recipe id=" + id + ", name=" + name + ", ingredients=" + ingredients + ", howto="
+                + howto + ", publik=" + publik + ", iduser=" + userid + "]";
     }
 }
 

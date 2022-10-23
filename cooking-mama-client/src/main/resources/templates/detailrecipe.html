@@ -1,78 +1,194 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-        <link rel="stylesheet" type="text/css" href="" th:href="@{/css/detail/style.css}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"  integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    </head>
-    <header>
-        <div class="topnav">
-            <a class="active" th:href="@{/home}"><img th:src="@{/images/cookma.png}" width="150" height="35"></a>
-            <div class="container-fluid">
-                <a class="navbar-brand">Detail Recipe</a>
-                <form class="d-flex">
-                    <input class="form-control mr-3 mt-3" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-success mt-3 mr-2 pt-2" type="submit">Search</button>
-                </form>
-<!--            <input type="text" placeholder="Search..">-->
-            </div>
-                <div>
-                    <a th:text="${authorDetail}"></a>
-                </div>
-
+<head>
+    <meta charset="UTF-8">
+    <title> Detail Recipe Cooking Mama </title>
+    <link href="" rel="stylesheet" th:href="@{/css/detail/style.css}" type="text/css">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" rel="stylesheet">
+</head>
+<header>
+    <div class="topnav">
+        <a class="active" th:href="@{/home}"><img height="35" th:src="@{/images/cookma.png}" width="150"></a>
+        <div class="container-fluid">
+            <a class="navbar-brand">Detail Recipe</a>
+            <form class="d-flex">
+                <input aria-label="Search" class="form-control mr-3 mt-3" placeholder="Search" type="search">
+                <button class="btn btn-success mt-3 mr-2 pt-2" type="submit">Search</button>
+            </form>
         </div>
-    </header>
-    <body>
+        <div>
+            <a th:text="${authorDetail}"></a>
+        </div>
+    </div>
+</header>
+<body>
+<div style="
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;">
+    <div style="
+                background-color: #FFFFFF;
+                border-style: black bottom;
+                height: 100%;
+                width: 900px;
+                position: static;
+                margin-left: 10px;">
+        <h1 style="text-align: center; margin-top: 50px;" th:text="${authorTitle}"></h1>
         <div>
             <h1 th:text="${detail.name}">test</h1>
             <div class="uname-author">
                 <br><br>
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <svg class="bi bi-person" fill="currentColor" height="18" viewBox="0 0 16 16" width="18"
+                     xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                 </svg>
                 by <u th:text="${authorDetail}"></u>
             </div>
             <div class="updated">
-              <br>  Updated Aug 27, 2022
+                <br> Updated Aug 27, 2022
             </div>
-            <p> <img src = "https://kanalwisata.com/wp-content/uploads/2020/05/baso-aci.jpg" class="centerimg"> </p>
+            <p><img class="centerimg" src="https://kanalwisata.com/wp-content/uploads/2020/05/baso-aci.jpg"></p>
             <br><br>
-
-            <p th:text="${detail.howto}" >INGREDIENTS:</p>
-            <p style="margin-left: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;">
-            <p style="text-align:center; margin-top: 50px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;" >INGREDIENTS:</p>
-            <p th:text="${detail.ingredients}"  style="margin-left: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;">
-
-                1 medium yellow onion <br>
-                1 tablespoon olive oil <br>
-                1 pound lean ground beef <br>
-                1/2 teaspoon kosher salt <br>
-                1/4 teaspoon freshly ground black pepper <br>
-                1 (24 to 25-ounce) jar marinara sauce (3 cups), such as Rao's or Newman's Own <br>
-                12 ounces low-moisture mozzarella cheese, shredded (about 3 cups), divided <br>
+            <p style="text-align:center; margin-top: 50px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">
+                INGREDIENTS:</p>
+            <p style="white-space: pre; margin-left: 80px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial;"
+               th:utext="${detail.ingredients}"></p>
+            <p style="text-align:center; margin-top: 80px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">
+                HOW TO COOK: </p>
+            <p style="margin-left: 80px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify; white-space: pre;"
+               th:utext="${detail.howto}">
             </p>
-            <p style="text-align:center; margin-top: 80px; font-size: 1.4em; font-family: Open Sans, Open Sans Hebrew, Arial;">HOW TO COOK: </p>
-            <p th:text="${detail.howto}"  style="margin-left: 50px; margin-right: 50px; margin-top: 40px; font-size: 1.1em; font-family: Open Sans, Open Sans Hebrew, Arial; text-align: justify;">
-                1. Heat the oven to 400ºF. Arrange a rack in the middle of the oven and heat the oven to 400°F.<br><br>
-                2. Brown the beef and onion. Finely chop 1 medium yellow onion. Heat 1 tablespoon olive oil in a 12-inch or larger regular or cast iron skillet over medium-high heat until shimmering.
-                Add the onion, 1 pound lean ground beef, 1/2 teaspoon kosher salt, and 1/4 teaspoon freshly ground black pepper, and cook, breaking the beef up into small pieces with a wooden spoon, until the beef is cooked through, 6 to 8 minutes.
-                Remove from the heat and let cool for 5 minutes. <br><br>
-                3. Prepare the baking dish and assemble the meat sauce. Open 1 (24 to 25-ounce) jar marinara sauce (3 cups).
-                Spread a thin layer of the sauce in the bottom of a 9x13-inch baking dish. Stir the remaining sauce into the ground beef mixture.
-            </p>
-            <div style="margin-top: 50px; margin-left: 400px;">
-                <a th:href="@{/edit/}+${recipe.id}"> <button type="button" class="btn btn-light"> <svg xmlns="http://www.w3.org/2000/svg" color="black" width="35" height="40" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-                </svg> </button> </a>
-                <form th:method="delete" th:action="@{/deleteRecipe/}+${detail.id}">
-                    <input type="hidden" name="id" th:value="${detail.id}" />
-                    <button class="button u-full-width" type="submit"><svg xmlns="http://www.w3.org/2000/svg" color="black" width="35" height="40" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                    </svg></button>
+            <th:block th:if="${isSameUserID}">
+                <div style="margin-top: 50px; margin-left: 400px;">
+                    <a th:href="@{/edit/}+${recipe.id}">
+                        <button class="btn btn-light" type="button">
+                            <svg class="bi bi-pencil" color="black" fill="currentColor" height="40" viewBox="0 0 16 16"
+                                 width="35" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                            </svg>
+                        </button>
+                    </a>
+                    <form th:action="@{/deleteRecipe/}+${detail.id}" th:method="delete">
+                        <input name="id" th:value="${detail.id}" type="hidden"/>
+                        <button class="button u-full-width" type="submit">
+                            <svg class="bi bi-trash" color="black" fill="currentColor" height="40" viewBox="0 0 16 16"
+                                 width="35" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
+                                      fill-rule="evenodd"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </th:block>
+
+        </div>
+        <div class="container" th:each="comment : ${recipeComments}">
+            <div class="row">
+                <div class="col-md-8 border-bottom">
+                    <div style="width: 700px;">
+                        <div class="media g-mb-30 media-comment">
+                            <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
+                                <div class="g-mb-15">
+                                    <h5 class="h5 g-color-gray-dark-v1 mb-0">John Doe</h5>
+                                    <span class="g-color-gray-dark-v4 g-font-size-12">5 days ago</span>
+                                </div>
+
+                                <p th:text="${comment.text}"></p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--                <div style="border-style: ridge;-->
+        <!--                            height: 500%;-->
+        <!--                            width: 700px;-->
+        <!--                            margin-top: 50px;-->
+        <!--                            margin-left: 100px;-->
+        <!--                            background: #ffff;-->
+        <!--                            padding: 40px;">-->
+        <!--                    <h1 style="margin-top: 18px; margin-left: 4px; font-size: 1.2em; text-align: left" th:text="${authorDetail}">username</h1>-->
+        <!--                    <div class="contain">-->
+        <!--                        <div style="border-style: ridge;-->
+        <!--                                    margin-top: 14px;-->
+        <!--                                    height: 40%;-->
+        <!--                                    background: #ffff;-->
+        <!--                                    width: 350px;">-->
+        <!--                            <p style="text-align:left; margin-top: 10px; margin-left: 4px; font-size: 1em; font-family: Open Sans, Open Sans Hebrew, Arial;" th:text="${commentSection}">Comment-->
+        <!--                            </p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+    </div>
+    <th:block th:if="${isSameUserID == false}">
+        <div>
+            <section id="app">
+                <div style="border-style: outset;
+                            height: 32%;
+                            width: 330px;
+                            position: fixed;">
+                    <h1 style="margin-top: 16px; font-size: 1em;">Leave A Comment</h1>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="comment">
+                                    <p v-for="items in item" v-text="items"></p>
+                                </div><!--End Comment-->
+                            </div><!--End col -->
+                        </div><!-- End row -->
+                        <div class="row">
+                            <div class="col-6">
+                            <textarea @keyup.enter="addItem()" class="input" placeholder="Your comment"
+                                      style="width: 290px;"
+                                      type="text" v-model="newItem"></textarea>
+                                <button :click="addItem()" class='primaryContained float-right' type="submit">Add
+                                    Comment
+                                </button>
+                            </div><!-- End col -->
+                        </div><!--End Row -->
+                    </div><!--End Container -->
+                </div>
+            </section>
+            <div style="margin-top: 220px;
+                            border-style: outset;
+                            height: 22%;
+                            width: 330px;
+                            position: fixed;">
+                <h1 style="margin-top: 16px; font-size: 1em;">Rate My Recipe!</h1>
+                <form method="post"
+                      name="postRating"
+                      th:action="@{/postRating/{recipeid}/{userid}(recipeid=${detail.id},userid=${detail.userid})}"
+                      th:object="${postRating}">
+                    <div class="rate">
+                        <input id="star5" name="rate" th:field="*{rate}" th:value="5" type="radio"/>
+                        <label for="star5" title="text">5 stars</label>
+                        <input id="star4" name="rate" th:field="*{rate}" th:value="4" type="radio"/>
+                        <label for="star4" title="text">4 stars</label>
+                        <input id="star3" name="rate" th:field="*{rate}" th:value="3" type="radio"/>
+                        <label for="star3" title="text">3 stars</label>
+                        <input id="star2" name="rate" th:field="*{rate}" th:value="2" type="radio"/>
+                        <label for="star2" title="text">2 stars</label>
+                        <input id="star1" name="rate" th:field="*{rate}" th:value="1" type="radio"/>
+                        <label for="star1" title="text">1 star</label>
+                        <button :click="addItem()" class='primaryContained float-right' style="margin-top: 45px;"
+                                type="submit">Submit
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
-    </body>
+    </th:block>
+
+</div>
+
+</body>
 </html>

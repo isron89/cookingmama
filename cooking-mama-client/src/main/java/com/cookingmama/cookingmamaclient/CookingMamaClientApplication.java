@@ -14,6 +14,9 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
+import java.io.IOException;
+import java.util.Arrays;
+
 @SpringBootApplication
 @EnableAutoConfiguration
 @Controller
@@ -28,38 +31,15 @@ public class CookingMamaClientApplication {
     }
     public static void main(String[] args) {
         SpringApplication.run(CookingMamaClientApplication.class, args);
+//        Header contentTypeHeader = new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+//        Header authorizationHeader = new BasicHeader(HttpHeaders.AUTHORIZATION, "Bearer 123token");
+//
+//        List<Header> headers = Arrays.asList(contentTypeHeader, authorizationHeader);
+//
+//        // set custom headers as default headers
+//        HttpClient client = HttpClients.custom().setDefaultHeaders(headers).build();
+//
+//        HttpUriRequest request = RequestBuilder.get().setUri("url").build();
+//        client.execute(request);
     }
-
-    @RequestMapping("/login")
-    public String Login(){
-        return "login";
-    }
-//    @GetMapping("/register")
-//    public String Register(){
-//        return "register";
-//    }
-
-
-
-
-
-
-    @GetMapping("/edit")
-    public String Edit(Model model){
-
-        model.addAttribute("authorEdit", "Singgih");
-//        CacheRequest object;
-//        String body = object.getBody();
-//        Gson gson = new Gson();
-//        Map<String, Object> map = gson.fromJson(body, HashMap.class);
-//        Map<String, Object> data = (Map<String, Object>) map.get("data");
-//        Map<String, Object> creditTerm = (Map<String, Object>) data.get("MS8B50FHS");
-//        String creditTermValue = creditTerm.get("creditTerm").toString();
-//        toStringSystem.out.println(creditTermValue);
-        return "edit";
-    }
-
-
-
-
 }

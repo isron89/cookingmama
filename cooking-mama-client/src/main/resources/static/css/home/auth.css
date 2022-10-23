@@ -1,0 +1,33 @@
+.dropbtn {
+    background-color: orange;
+    border-color: #c59b08;
+    color: white;
+    padding: 10px;
+    /*font-size: 12px;*/
+}
+.dropdown {
+    display: inline-block;
+    position: relative
+}
+.dropdown-content {
+    position: absolute;
+    /*background-color: lightgrey;*/
+    min-width: 100px;
+    display: none;
+    z-index: 1;
+}
+.dropdown-content a {
+    /*color: black;*/
+    padding: 7px 8px;
+    text-decoration: none;
+    display: block;
+}
+/*.dropdown-content a:hover {*/
+/*    background-color: orange;*/
+/*}*/
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/*.dropdown:hover .dropbtn {*/
+/*    background-color: grey;*/
+/*}*/

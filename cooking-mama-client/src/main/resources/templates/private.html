@@ -46,16 +46,21 @@
         </nav>
         <div class="container resep-content">
             <h1>All Recipes</h1>
-            <a th:href="@{/create}"><button class="btn-lg btn-success mt-3"> <i class="fa fa-plus mr-2"></i> Create Recipes</button></a>
+            <a th:href="@{/create}"><button class="btn-lg btn-success mt-3"> <i class="fa fa-plus mr-2"></i> Create New Recipes</button></a>
             <div class="row card-content">
                 <div class="col-lg-4 col-sm-6" th:each="recipe : ${recipes}">
                     <div class="card" style="width: 18rem;">
+                        <div class="d-flex flex-row-reverse">
+                            <span class="badge bg-warning text-white" th:if="${recipe.publik==true}">Public</span>
+                            <span class="badge bg-danger text-white" th:if="${recipe.publik==false}">Private</span>
+                        </div>
+
                         <img alt="..." class="card-img-top" src="" th:src="@{/images/cookma.png}">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${recipe.name}">Card title </h5>
                             <p class="card-text">Some quick example text to build on the card title and make up the bulk
                                 of the card's content.</p>
-                            <a class="btn btn-primary" th:href="@{/detail}">Detail Resep</a>
+                            <a class="btn btn-primary" th:href="@{/detail/}+${recipe.id}">Recipe Detail</a>
                         </div>
                     </div>
                 </div>
