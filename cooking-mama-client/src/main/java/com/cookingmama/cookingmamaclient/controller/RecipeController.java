@@ -35,9 +35,6 @@ public class RecipeController {
     @Autowired
     HttpSession session;
 
-
-
-
     @GetMapping("/home")
     public String Home(Model model) {
         String username = (String) session.getAttribute("Username");

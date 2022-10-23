@@ -19,7 +19,7 @@ public class CustomHeaderFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
         MutableHttpServletRequest mutableRequest = new MutableHttpServletRequest((HttpServletRequest) request);
-        if (session.getAttribute("Token") != null) {
+        if (session != null) {
             mutableRequest.putHeader("Authorization", "Bearer " + session.getAttribute("Token"));
         }
 //        mutableRequest.putHeader("Authorization", "Bearer "+session.getAttribute("Token"));

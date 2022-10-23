@@ -88,13 +88,14 @@ public class UserController {
         System.out.println(session.getAttribute("Userid"));
         System.out.println(session.getAttribute("Username"));
         System.out.println(session.getAttribute("Token"));
+        //not work
         System.out.println(userid);
         System.out.println(username);
         System.out.println(token);
         return "redirect:/home";
     }
 
-    @PostMapping("/destroy")
+    @PostMapping("/logout")
     public String destroySession(HttpServletRequest request) {
         request.getSession().invalidate();
         return "redirect:/login";

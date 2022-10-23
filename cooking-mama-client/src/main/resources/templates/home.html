@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link href="" rel="stylesheet" th:href="@{/css/home/style.css}">
+    <link href="" rel="stylesheet" th:href="@{/css/home/auth.css}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/css/bootstrap.min.css"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" rel="stylesheet">
@@ -37,11 +38,20 @@
                     <input type="text" name="search" id="search" th:value="${search}" aria-label="Search" class="form-control mr-3" placeholder="Search">
                     <input type="submit" value="Search" class="btn btn-success">
                 </form>
-                <div>
-                    <h5 th:text="${username}"></h5>
-                    <form th:action="@{/destroy}" method="post">
-                        <input type="submit" value="Logout" />
-                    </form>
+                <div class="dropdown">
+                    <div th:if="${username}" class="dropbtn" >
+                        <h5 th:text="${username}">
+                            <!-- <i class="fa fa-caret-down"></i>-->
+                        </h5>
+                        <div class="dropdown-content" id="myDropdown">
+                            <a>
+                            <form th:action="@{/logout}" method="post">
+                                <input type="submit" value="Logout" class="btn btn-danger"/>
+                            </form>
+                            </a>
+                        </div>
+                    </div>
+                    <a th:href="@{/login}"><input th:unless="${username}" type="submit" value="Login" class="btn btn-primary"/></input></a>
                 </div>
             </div>
         </nav>
@@ -111,6 +121,23 @@
         </div>
     </div>
 </div>
+</div>
+<script>
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
 
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(e) {
+        if (!e.target.matches('.dropbtn')) {
+            var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+                myDropdown.classList.remove('show');
+            }
+        }
+    }
+</script>
 </body>
 </html>
